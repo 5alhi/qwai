@@ -30,6 +30,9 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  // Trust reverse proxy (Coolify/Nginx/Traefik) so req.protocol reflects HTTPS correctly
+  // This ensures cookies are set with secure:true when served over HTTPS via proxy
+  app.set("trust proxy", 1);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));

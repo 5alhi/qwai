@@ -69,10 +69,12 @@ export const appRouter = router({
         const token = nanoid(64);
         const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7); // 7 days
         await createAdminSession(token, expiresAt);
+        // With trust proxy enabled, req.protocol correctly reflects https behind Coolify/Nginx
+        const isSecure = ctx.req.protocol === "https" || process.env.NODE_ENV === "production";
         ctx.res.cookie(ADMIN_TOKEN_COOKIE, token, {
           httpOnly: true,
-          secure: ctx.req.protocol === "https",
-          sameSite: "lax",
+          secure: isSecure,
+          sameSite: isSecure ? "none" : "lax",
           path: "/",
           expires: expiresAt,
         });
