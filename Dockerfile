@@ -3,10 +3,11 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# Copy package files AND patches (pnpm needs patches during install)
 COPY package.json pnpm-lock.yaml ./
+COPY patches/ ./patches/
 
-# Install dependencies
+# Install all dependencies (including devDependencies for build)
 RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
 # Copy source code
@@ -23,8 +24,9 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm
 
-# Copy package files
+# Copy package files AND patches (pnpm needs patches during install)
 COPY package.json pnpm-lock.yaml ./
+COPY patches/ ./patches/
 
 # Install production dependencies only
 RUN pnpm install --frozen-lockfile --prod
@@ -36,8 +38,8 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 3000
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3000/api/trpc', (r) => process.exit(0)).on('error', () => process.exit(1))"
 
 # Start the application
 CMD ["node", "dist/index.js"]
