@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin area from indexing
+Disallow: /admin
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://qw.ai/sitemap.xml

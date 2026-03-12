@@ -39,3 +39,9 @@
 - [ ] Add more articles via admin panel
 - [ ] Add contact/newsletter section
 - [ ] Social sharing buttons on article detail pages
+- [ ] Update all domain references to https://qw.ai
+- [ ] Update HTML meta tags, title, description for qw.ai
+- [ ] Add Open Graph / Twitter Card meta tags for qw.ai
+- [ ] Add canonical URL tags pointing to qw.ai
+- [ ] Create/update robots.txt and sitemap.xml for qw.ai
+- [ ] Update CORS and cookie settings for qw.ai domain

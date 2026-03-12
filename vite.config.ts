@@ -178,6 +178,9 @@ export default defineConfig({
       ".manusvm.computer",
       "localhost",
       "127.0.0.1",
+      "qw.ai",
+      ".qw.ai",
+      ".salhi.com",
     ],
     fs: {
       strict: true,
