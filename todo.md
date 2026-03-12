@@ -30,6 +30,9 @@
 - [x] All 6 tests passing (auth, articles, admin check)
 - [x] ADMIN_PASSWORD secret configured via environment variable
 
+## In Progress
+- [ ] Auto-seed articles on startup so admin panel always has content by default
+
 ## Pending / Future
 - [ ] Push to GitHub repository
 - [ ] Configure Coolify deployment
