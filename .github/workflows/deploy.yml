@@ -1,0 +1,18 @@
+name: Deploy to Coolify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Trigger Coolify Redeploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Coolify Webhook
+        run: |
+          curl --silent --show-error --fail \
+            --request GET \
+            "${{ secrets.COOLIFY_WEBHOOK_URL }}"
