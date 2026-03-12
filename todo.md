@@ -31,7 +31,7 @@
 - [x] ADMIN_PASSWORD secret configured via environment variable
 
 ## In Progress
-- [ ] Auto-seed articles on startup so admin panel always has content by default
+- [x] Auto-seed articles on startup so admin panel always has content by default
 
 ## Pending / Future
 - [ ] Push to GitHub repository
