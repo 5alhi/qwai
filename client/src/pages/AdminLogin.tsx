@@ -7,13 +7,17 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Lock, Eye, EyeOff } from "lucide-react";
 
+export const ADMIN_TOKEN_KEY = "qwai_admin_token";
+
 export default function AdminLogin() {
   const [, navigate] = useLocation();
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const loginMutation = trpc.admin.login.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
+      // Store JWT in localStorage — works reliably behind any reverse proxy
+      localStorage.setItem(ADMIN_TOKEN_KEY, data.token);
       toast.success("Welcome to the QWAI Admin Panel");
       navigate("/admin/dashboard");
     },

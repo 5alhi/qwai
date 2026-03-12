@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -16,31 +16,39 @@ import {
   ExternalLink,
 } from "lucide-react";
 
+export const ADMIN_TOKEN_KEY = "qwai_admin_token";
+
 export default function AdminPanel() {
   const [, navigate] = useLocation();
   const utils = trpc.useUtils();
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem(ADMIN_TOKEN_KEY));
 
-  // Check auth
-  const authCheck = trpc.admin.check.useQuery();
+  // Check auth via token
+  const authCheck = trpc.admin.check.useQuery(
+    { token: token ?? undefined },
+    { enabled: !!token }
+  );
 
   useEffect(() => {
-    if (authCheck.data && !authCheck.data.authenticated) {
+    // If no token or token is invalid, redirect to login
+    if (!token || (authCheck.data && !authCheck.data.authenticated)) {
+      localStorage.removeItem(ADMIN_TOKEN_KEY);
       navigate("/admin");
     }
-  }, [authCheck.data, navigate]);
+  }, [token, authCheck.data, navigate]);
 
-  // Articles list
+  // Articles list — passes token via headers (handled by trpc client)
   const articlesQuery = trpc.adminArticles.list.useQuery(undefined, {
     enabled: authCheck.data?.authenticated === true,
   });
 
-  // Mutations
-  const logoutMutation = trpc.admin.logout.useMutation({
-    onSuccess: () => {
-      toast.success("Logged out successfully");
-      navigate("/admin");
-    },
-  });
+  // Logout
+  const handleLogout = () => {
+    localStorage.removeItem(ADMIN_TOKEN_KEY);
+    setToken(null);
+    toast.success("Logged out successfully");
+    navigate("/admin");
+  };
 
   const deleteMutation = trpc.adminArticles.delete.useMutation({
     onSuccess: () => {
@@ -66,7 +74,7 @@ export default function AdminPanel() {
     onError: (err) => toast.error(err.message),
   });
 
-  if (authCheck.isLoading) {
+  if (!token || authCheck.isLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-accent text-4xl animate-pulse">ψ</div>
@@ -103,8 +111,7 @@ export default function AdminPanel() {
               variant="outline"
               size="sm"
               className="gap-2 border-destructive/50 text-destructive hover:bg-destructive/10"
-              onClick={() => logoutMutation.mutate()}
-              disabled={logoutMutation.isPending}
+              onClick={handleLogout}
             >
               <LogOut size={14} />
               Logout

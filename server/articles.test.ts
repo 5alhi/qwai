@@ -36,7 +36,14 @@ describe("articles router", () => {
   it("admin.check returns authenticated: false without token", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
-    const result = await caller.admin.check();
+    const result = await caller.admin.check({ token: undefined });
+    expect(result.authenticated).toBe(false);
+  });
+
+  it("admin.check returns authenticated: false with invalid token", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+    const result = await caller.admin.check({ token: "invalid-token" });
     expect(result.authenticated).toBe(false);
   });
 });

@@ -1,13 +1,10 @@
 import { TRPCError } from "@trpc/server";
-import { nanoid } from "nanoid";
+import { SignJWT, jwtVerify } from "jose";
 import { z } from "zod";
 import {
-  createAdminSession,
   createArticle,
-  deleteAdminSession,
   deleteArticle,
   getAllArticles,
-  getAdminSession,
   getArticleBySlug,
   getPublishedArticles,
   updateArticle,
@@ -17,16 +14,25 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 
-// ─── Admin password ──────────────────────────────────────────────────────────
+// ─── Admin password & JWT secret ─────────────────────────────────────────────
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "qwai-admin-2026";
-const ADMIN_TOKEN_COOKIE = "qwai_admin_token";
+const JWT_SECRET = new TextEncoder().encode(
+  process.env.JWT_SECRET ?? "qwai-jwt-secret-change-in-production"
+);
+const JWT_EXPIRY = "7d";
 
-// ─── Admin middleware ─────────────────────────────────────────────────────────
+// ─── Admin middleware — reads Bearer token from Authorization header ──────────
 const adminProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const token = ctx.req.cookies?.[ADMIN_TOKEN_COOKIE] as string | undefined;
-  if (!token) throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
-  const session = await getAdminSession(token);
-  if (!session) throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired admin session" });
+  const authHeader = ctx.req.headers["authorization"] as string | undefined;
+  const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+  if (!token) {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
+  }
+  try {
+    await jwtVerify(token, JWT_SECRET, { audience: "qwai-admin" });
+  } catch {
+    throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired admin session" });
+  }
   return next({ ctx: { ...ctx, adminToken: token } });
 });
 
@@ -58,41 +64,36 @@ export const appRouter = router({
     }),
   }),
 
-  // ─── Admin auth ─────────────────────────────────────────────────────────────
+  // ─── Admin auth — JWT-based, no cookies ─────────────────────────────────────
   admin: router({
     login: publicProcedure
       .input(z.object({ password: z.string() }))
-      .mutation(async ({ input, ctx }) => {
+      .mutation(async ({ input }) => {
         if (input.password !== ADMIN_PASSWORD) {
           throw new TRPCError({ code: "UNAUTHORIZED", message: "Incorrect password" });
         }
-        const token = nanoid(64);
-        const expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7); // 7 days
-        await createAdminSession(token, expiresAt);
-        // With trust proxy enabled, req.protocol correctly reflects https behind Coolify/Nginx
-        const isSecure = ctx.req.protocol === "https" || process.env.NODE_ENV === "production";
-        ctx.res.cookie(ADMIN_TOKEN_COOKIE, token, {
-          httpOnly: true,
-          secure: isSecure,
-          sameSite: isSecure ? "none" : "lax",
-          path: "/",
-          expires: expiresAt,
-        });
-        return { success: true };
+        // Issue a signed JWT — no database, no cookies
+        const token = await new SignJWT({ role: "admin" })
+          .setProtectedHeader({ alg: "HS256" })
+          .setAudience("qwai-admin")
+          .setIssuedAt()
+          .setExpirationTime(JWT_EXPIRY)
+          .sign(JWT_SECRET);
+        return { success: true, token };
       }),
 
-    logout: adminProcedure.mutation(async ({ ctx }) => {
-      await deleteAdminSession(ctx.adminToken);
-      ctx.res.clearCookie(ADMIN_TOKEN_COOKIE, { path: "/" });
-      return { success: true };
-    }),
-
-    check: publicProcedure.query(async ({ ctx }) => {
-      const token = ctx.req.cookies?.[ADMIN_TOKEN_COOKIE] as string | undefined;
-      if (!token) return { authenticated: false };
-      const session = await getAdminSession(token);
-      return { authenticated: !!session };
-    }),
+    // Verify token is still valid (used by frontend auth check)
+    check: publicProcedure
+      .input(z.object({ token: z.string().optional() }))
+      .query(async ({ input }) => {
+        if (!input.token) return { authenticated: false };
+        try {
+          await jwtVerify(input.token, JWT_SECRET, { audience: "qwai-admin" });
+          return { authenticated: true };
+        } catch {
+          return { authenticated: false };
+        }
+      }),
   }),
 
   // ─── Public articles ─────────────────────────────────────────────────────────

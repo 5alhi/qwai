@@ -26,14 +26,19 @@ export default function AdminArticleEdit() {
   const isNew = !params.id;
   const articleId = params.id ? parseInt(params.id) : undefined;
   const utils = trpc.useUtils();
+  const [token] = useState<string | null>(() => localStorage.getItem("qwai_admin_token"));
 
-  // Auth check
-  const authCheck = trpc.admin.check.useQuery();
+  // Auth check using JWT token
+  const authCheck = trpc.admin.check.useQuery(
+    { token: token ?? undefined },
+    { enabled: !!token }
+  );
   useEffect(() => {
-    if (authCheck.data && !authCheck.data.authenticated) {
+    if (!token || (authCheck.data && !authCheck.data.authenticated)) {
+      localStorage.removeItem("qwai_admin_token");
       navigate("/admin");
     }
-  }, [authCheck.data, navigate]);
+  }, [token, authCheck.data, navigate]);
 
   // Form state
   const [form, setForm] = useState({
