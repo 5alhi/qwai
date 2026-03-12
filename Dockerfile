@@ -1,22 +1,4 @@
-# Build stage
-FROM node:22-alpine AS builder
-
-WORKDIR /app
-
-# Copy package files AND patches (pnpm needs patches during install)
-COPY package.json pnpm-lock.yaml ./
-COPY patches/ ./patches/
-
-# Install all dependencies (including devDependencies for build)
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
-
-# Copy source code
-COPY . .
-
-# Build the application
-RUN pnpm run build
-
-# Production stage
+# Single-stage build: install all deps (including devDeps needed at runtime by esbuild --packages=external)
 FROM node:22-alpine
 
 WORKDIR /app
@@ -28,18 +10,18 @@ RUN npm install -g pnpm
 COPY package.json pnpm-lock.yaml ./
 COPY patches/ ./patches/
 
-# Install production dependencies only
-RUN pnpm install --frozen-lockfile --prod
+# Install ALL dependencies (devDeps are needed at runtime because esbuild uses --packages=external)
+RUN pnpm install --frozen-lockfile
 
-# Copy built application from builder
-COPY --from=builder /app/dist ./dist
+# Copy all source files
+COPY . .
+
+# Build the application (vite build + esbuild server bundle)
+RUN pnpm run build
 
 # Expose port
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000/api/trpc', (r) => process.exit(0)).on('error', () => process.exit(1))"
-
-# Start the application
+# Start the application in production mode
+ENV NODE_ENV=production
 CMD ["node", "dist/index.js"]
