@@ -1,0 +1,23 @@
+{
+  "name": "Quantum Wave AI",
+  "description": "Futuristic website for Quantum Wave Artificial Intelligence",
+  "documentation": "https://docs.coolify.io",
+  "version": "1.0.0",
+  "build": {
+    "context": ".",
+    "dockerfile": "Dockerfile"
+  },
+  "ports": [
+    {
+      "published": 3000,
+      "target": 3000,
+      "protocol": "tcp"
+    }
+  ],
+  "environment": [
+    {
+      "key": "NODE_ENV",
+      "value": "production"
+    }
+  ]
+}

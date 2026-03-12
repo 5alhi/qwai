@@ -1,0 +1,57 @@
+name: Build and Deploy to Coolify
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check TypeScript
+        run: pnpm run check
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Build Docker image
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker build -t qw-ai-website:latest .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Coolify
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+        run: |
+          if [ -n "$COOLIFY_WEBHOOK" ]; then
+            curl -X POST "$COOLIFY_WEBHOOK"
+          fi
