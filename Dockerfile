@@ -19,9 +19,14 @@ COPY . .
 # Build the application (vite build + esbuild server bundle)
 RUN pnpm run build
 
+# Make startup script executable
+RUN chmod +x start.sh
+
 # Expose port
 EXPOSE 3000
 
-# Start the application in production mode
+# Set production environment
 ENV NODE_ENV=production
-CMD ["node", "dist/index.js"]
+
+# Start: run DB migrations first, then start the server
+CMD ["sh", "start.sh"]
