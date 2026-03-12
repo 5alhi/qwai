@@ -1,275 +1,179 @@
-import { Button } from "@/components/ui/button";
+import SiteNav from "@/components/SiteNav";
+import SiteFooter from "@/components/SiteFooter";
+import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
-import { ArrowRight, Calendar, User } from "lucide-react";
+import { useState } from "react";
+import { Search, ExternalLink } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
-/**
- * Design Philosophy: Quantum Futurism
- * - Dark backgrounds with cyan/magenta accents
- * - Glassmorphism cards for article previews
- * - Easily updatable article data structure
- * - Smooth hover effects and transitions
- */
-
-// EASILY UPDATABLE: Add or modify articles here
-const articles = [
-  {
-    slug: "quantum-computing-breakthrough",
-    title: "Quantum Computing Breakthrough: 1000x Performance Gains",
-    excerpt:
-      "Discover how our latest quantum processors achieve unprecedented computational speeds, enabling solutions to previously intractable problems.",
-    date: "2026-03-10",
-    author: "Dr. Sarah Chen",
-    category: "Technology",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-particles-Nt2LXRvuGyeohhFZekUSAz.webp",
-  },
-  {
-    slug: "ai-neural-networks-evolution",
-    title: "The Evolution of Neural Networks: From Theory to Practice",
-    excerpt:
-      "Explore how artificial neural networks have evolved from theoretical concepts to practical, production-grade systems powering modern AI.",
-    date: "2026-03-08",
-    author: "Prof. James Mitchell",
-    category: "AI Research",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/ai-neural-network-S5YsLBDJBTTNPepoT5Y9Rw.webp",
-  },
-  {
-    slug: "wave-function-applications",
-    title: "Wave Function Optimization: Practical Applications in Industry",
-    excerpt:
-      "Learn how wave function optimization techniques are revolutionizing optimization problems across finance, logistics, and manufacturing.",
-    date: "2026-03-05",
-    author: "Dr. Michael Rodriguez",
-    category: "Applications",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/wave-function-abstract-S3WSdJqLUfjhh4G6Tdda6W.webp",
-  },
-  {
-    slug: "quantum-ai-synergy",
-    title: "The Synergy Between Quantum Computing and Artificial Intelligence",
-    excerpt:
-      "Understand how quantum computing and AI complement each other, creating exponential improvements in problem-solving capabilities.",
-    date: "2026-03-01",
-    author: "Dr. Lisa Wang",
-    category: "Research",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-hero-bg-YerM3ndorop85QQiK2iBkf.webp",
-  },
-  {
-    slug: "enterprise-quantum-adoption",
-    title: "Enterprise Guide: Adopting Quantum AI Solutions",
-    excerpt:
-      "A comprehensive guide for enterprises looking to integrate quantum AI technologies into their existing infrastructure and workflows.",
-    date: "2026-02-28",
-    author: "David Thompson",
-    category: "Enterprise",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/tech-circuit-pattern-crHWqCYoUGCbwyqjYFWPoW.webp",
-  },
-  {
-    slug: "future-of-quantum-ai",
-    title: "The Future of Quantum AI: Predictions and Possibilities",
-    excerpt:
-      "Explore expert predictions on how quantum AI will shape industries, society, and scientific discovery in the next decade.",
-    date: "2026-02-25",
-    author: "Dr. Emma Johnson",
-    category: "Future",
-    image:
-      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-particles-Nt2LXRvuGyeohhFZekUSAz.webp",
-  },
+const CATEGORIES = [
+  "All",
+  "QWAI Philosophy",
+  "Quantum Computing",
+  "Artificial Intelligence",
+  "Cryptography & Security",
+  "Energy & Sustainability",
+  "Research & Theory",
+  "Industry Insights",
 ];
 
 export default function Articles() {
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 backdrop-blur-md bg-background/50 border-b border-border">
-        <div className="container flex items-center justify-between py-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="text-2xl font-bold glow-cyan">ψ</div>
-            <span className="text-xl font-bold">qw.ai</span>
-          </Link>
-          <div className="flex items-center gap-8">
-            <Link href="/" className="hover:text-accent transition-colors">
-              Home
-            </Link>
-            <Link href="/articles" className="text-accent font-semibold">
-              Articles
-            </Link>
-            <Button className="bg-accent text-background hover:bg-accent/90">
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </nav>
+  const [search, setSearch] = useState("");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-      {/* Header */}
-      <section className="pt-32 pb-16 border-b border-border">
-        <div className="container text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Quantum Wave <span className="glow-cyan">Insights</span>
+  const articlesQuery = trpc.articles.list.useQuery();
+  const articles = articlesQuery.data ?? [];
+
+  const filtered = articles.filter((a) => {
+    const matchesCategory = activeCategory === "All" || a.category === activeCategory;
+    const matchesSearch =
+      !search ||
+      a.title.toLowerCase().includes(search.toLowerCase()) ||
+      a.excerpt.toLowerCase().includes(search.toLowerCase()) ||
+      a.author.toLowerCase().includes(search.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  return (
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <SiteNav />
+
+      <section className="pt-32 pb-16 relative overflow-hidden">
+        <div
+          className="absolute inset-0 z-0 opacity-15"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse at 50% 0%, oklch(0.6 0.25 262 / 0.5) 0%, transparent 70%)",
+          }}
+        />
+        <div className="container relative z-10 text-center">
+          <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-mono uppercase tracking-widest">
+            Thought Leadership
+          </div>
+          <h1 className="mb-4">
+            QWAI <span className="text-accent glow-cyan">Articles</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Explore cutting-edge research, industry insights, and expert
-            perspectives on quantum computing and artificial intelligence.
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            Exploring the convergence of quantum physics and artificial intelligence — from theoretical foundations to practical implications.
           </p>
         </div>
       </section>
 
-      {/* Articles Grid */}
-      <section className="py-20 md:py-32">
-        <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {articles.map((article) => (
-              <Link key={article.slug} href={`/articles/${article.slug}`}>
-                <div className="glass rounded-lg overflow-hidden hover:glow-pulse transition-all duration-300 cursor-pointer h-full flex flex-col">
-                  {/* Image */}
-                  <div className="relative h-48 overflow-hidden bg-muted">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-accent/20 text-accent text-sm font-semibold rounded-full">
-                        {article.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold mb-3 line-clamp-2 hover:text-accent transition-colors">
-                      {article.title}
-                    </h3>
-
-                    <p className="text-muted-foreground mb-4 line-clamp-2 flex-grow">
-                      {article.excerpt}
-                    </p>
-
-                    {/* Meta */}
-                    <div className="space-y-3 pt-4 border-t border-border/50">
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Calendar className="h-4 w-4" />
-                        {new Date(article.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </div>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <User className="h-4 w-4" />
-                        {article.author}
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="mt-6 pt-4 border-t border-border/50">
-                      <div className="flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all">
-                        Read Article
-                        <ArrowRight className="h-4 w-4" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+      <section className="border-b border-border/50 bg-card/20 sticky top-16 z-40 backdrop-blur-md">
+        <div className="container py-4">
+          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+            <div className="relative flex-1 max-w-sm">
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search articles..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-8 bg-input border-border text-sm"
+              />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                    activeCategory === cat
+                      ? "bg-accent text-background"
+                      : "border border-border text-muted-foreground hover:border-accent/50 hover:text-accent"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-12 bg-background/50">
+      <main className="flex-1 py-12">
         <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <h4 className="font-bold mb-4">Product</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Security
-                  </a>
-                </li>
-              </ul>
+          {articlesQuery.isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="glass rounded-xl p-6 animate-pulse">
+                  <div className="h-3 bg-muted/50 rounded mb-3 w-1/3" />
+                  <div className="h-5 bg-muted/50 rounded mb-2 w-4/5" />
+                  <div className="h-4 bg-muted/50 rounded mb-1 w-full" />
+                  <div className="h-4 bg-muted/50 rounded w-3/4" />
+                </div>
+              ))}
             </div>
-            <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Careers
-                  </a>
-                </li>
-              </ul>
+          ) : filtered.length === 0 ? (
+            <div className="text-center py-24">
+              <div className="text-5xl mb-4 text-accent">ψ</div>
+              <p className="text-muted-foreground text-lg mb-2">No articles found</p>
+              <p className="text-muted-foreground/60 text-sm">
+                {search || activeCategory !== "All"
+                  ? "Try adjusting your search or category filter."
+                  : "Articles will appear here once published. Use the admin panel to create your first article."}
+              </p>
             </div>
-            <div>
-              <h4 className="font-bold mb-4">Resources</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    API Reference
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Support
-                  </a>
-                </li>
-              </ul>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filtered.map((article) => (
+                <Link key={article.id} href={`/articles/${article.slug}`}>
+                  <div className="glass rounded-xl overflow-hidden hover:border-accent/40 transition-all duration-300 group h-full flex flex-col cursor-pointer">
+                    {article.imageUrl && (
+                      <div className="h-44 overflow-hidden">
+                        <img
+                          src={article.imageUrl}
+                          alt={article.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5 flex flex-col flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-xs font-mono text-accent uppercase tracking-widest">
+                          {article.category}
+                        </span>
+                        {article.featured && (
+                          <span className="text-xs text-yellow-400 border border-yellow-500/30 bg-yellow-500/10 px-2 py-0.5 rounded-full">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-accent transition-colors leading-snug">
+                        {article.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                        {article.excerpt}
+                      </p>
+                      <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between text-xs text-muted-foreground/60">
+                        <span>{article.author}</span>
+                        <div className="flex items-center gap-2">
+                          {article.publishedAt && (
+                            <span>{new Date(article.publishedAt).toLocaleDateString()}</span>
+                          )}
+                          {article.linkedinUrl && (
+                            <a
+                              href={article.linkedinUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-accent hover:text-accent/80 transition-colors"
+                              title="View on LinkedIn"
+                            >
+                              <ExternalLink size={12} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <div>
-              <h4 className="font-bold mb-4">Legal</h4>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Privacy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Terms
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-accent transition-colors">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-border pt-8 text-center text-muted-foreground">
-            <p>&copy; 2026 Quantum Wave AI. All rights reserved.</p>
-          </div>
+          )}
         </div>
-      </footer>
+      </main>
+
+      <SiteFooter />
     </div>
   );
 }
