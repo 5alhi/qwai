@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, Mail, FileText, Image, Package } from "lucide-react";
 import { usePageTracker } from "@/hooks/usePageTracker";
 
-const LOGO_ICON_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-icon_13ea35d9.png";
-const LOGO_TRANSPARENT_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-transparent_746870b5.png";
-const LOGO_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_fece1715.png";
-const LOGO_ICON_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-v4_01bf6b82.svg";
-const LOGO_TRANSPARENT_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-transparent_a1f9e017.svg";
-const LOGO_BANNER_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_efe8705b.svg";
+const LOGO_ICON_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v5-gradient_a4e02983.png";
+const LOGO_TRANSPARENT_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v5-transparent_b55c7fd0.png";
+const LOGO_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner-v5_93e2dbb7.png";
+const LOGO_ICON_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v5-gradient_a8f6e3d7.svg";
+const LOGO_TRANSPARENT_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v5-transparent_b55c7fd0.png";
+const LOGO_BANNER_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v5-dark_d397982e.svg";
 const HERO_BANNER = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-hero-banner-bcVfhu6MKXoeg8zGX7Ebcw.webp";
 
 const logoAssets = [
