@@ -24,7 +24,10 @@ export default function SiteFooter() {
               <li><Link href="/" className="text-xs text-muted-foreground hover:text-accent transition-colors">Home</Link></li>
               <li><Link href="/philosophy" className="text-xs text-muted-foreground hover:text-accent transition-colors">The Way of QWAI</Link></li>
               <li><Link href="/articles" className="text-xs text-muted-foreground hover:text-accent transition-colors">Articles</Link></li>
-              <li><Link href="/legal" className="text-xs text-muted-foreground hover:text-accent transition-colors">Legal & Disclaimer</Link></li>
+              <li><Link href="/careers" className="text-xs text-muted-foreground hover:text-accent transition-colors">Careers</Link></li>
+              <li><Link href="/investors" className="text-xs text-muted-foreground hover:text-accent transition-colors">Investors</Link></li>
+              <li><Link href="/press" className="text-xs text-muted-foreground hover:text-accent transition-colors">Press &amp; Media</Link></li>
+              <li><Link href="/legal" className="text-xs text-muted-foreground hover:text-accent transition-colors">Legal &amp; Disclaimer</Link></li>
             </ul>
           </div>
 

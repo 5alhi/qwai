@@ -9,7 +9,7 @@ import { useState } from "react";
 import { usePageTracker } from "@/hooks/usePageTracker";
 import { toast } from "sonner";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-hero-bg_66e85d4b.png";
+const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-hero-banner-bcVfhu6MKXoeg8zGX7Ebcw.webp";
 const CIRCUIT_BG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/tech-circuit-pattern_15b4cc8d.png";
 const NEURAL_BG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/ai-neural-network_db02c636.png";
 

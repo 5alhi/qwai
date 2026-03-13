@@ -15,6 +15,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
 import AdminArticleEdit from "./pages/AdminArticleEdit";
 import AdminAnalytics from "./pages/AdminAnalytics";
+import Press from "./pages/Press";
 
 /**
  * Design Philosophy: Quantum Futurism with Premium Startup Aesthetic
@@ -34,6 +35,7 @@ function Router() {
       <Route path={"/legal"} component={Legal} />
       <Route path={"/careers"} component={Careers} />
       <Route path={"/investors"} component={Investors} />
+      <Route path={"/press"} component={Press} />
       <Route path={"/admin"} component={AdminLogin} />
       <Route path={"/admin/dashboard"} component={AdminPanel} />
       <Route path={"/admin/articles/new"} component={AdminArticleEdit} />

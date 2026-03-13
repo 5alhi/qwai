@@ -38,7 +38,7 @@
 - [ ] Configure Coolify deployment
 - [ ] Add more articles via admin panel
 - [ ] Add contact/newsletter section
-- [ ] Social sharing buttons on article detail pages
+- [x] Social sharing buttons on article detail pages (LinkedIn, X/Twitter, Copy Link)
 - [x] Update all domain references to https://qw.ai
 - [x] Update HTML meta tags, title, description for qw.ai
 - [x] Add Open Graph / Twitter Card meta tags for qw.ai
@@ -58,10 +58,11 @@
 
 ## Legitimacy & Visual Identity
 - [x] Logo mark (Q+ψ) icon generated and integrated into navbar/favicon
+- [x] Logo mark v2: Q as outer shell, ψ rotated with stem aligning to Q tail, fork as internal wave (SVG + PNG + transparent variants)
 - [x] Horizontal logo banner generated
-- [ ] Hero banner image (neural network + quantum computer collision) generated
+- [x] Hero banner image (neural network + quantum computer collision) generated
 - [x] Careers page with "express interest" form
 - [x] Investor Relations page with vision and "express interest" form
-- [ ] Press / Media section in footer
+- [x] Press / Media Kit page (/press) with logo downloads, brand colours, typography, company description
 - [x] Article cover images generated for all 6 seed articles
 - [ ] Quantum/AI image library for future articles
