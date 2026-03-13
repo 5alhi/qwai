@@ -11,6 +11,8 @@ const seedArticles = [
     title: "The Way of QWAI — Part 1: The Quantum Green Paradox",
     excerpt:
       "What if the biggest problem in AI isn't intelligence — it's energy? And what if quantum wave mechanics is the solution hiding in plain sight?",
+    imageUrl:
+      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-green-paradox-aFiMroRyDYkkfcaWwvkbNY.webp",
     content: `<h2>The AI Energy Crisis</h2>
 <p>The AI industry is building Gigawatt-scale data centers to train trillion-parameter models. Microsoft, Google, Amazon — all racing to build more compute. But there is a paradox at the heart of this race: the more intelligent we make AI, the more energy it consumes.</p>
 <p>This is the <strong>Quantum Green Paradox</strong>: we are building superintelligence on a foundation that is physically unsustainable.</p>
@@ -36,6 +38,8 @@ const seedArticles = [
     title: "The Way of QWAI — Part 2: The Quantum Sentinel",
     excerpt:
       "Current encryption is a mathematical speedbump. The Quantum Sentinel proposes a world where privacy is native, not bolted on — and tampering is physically impossible to hide.",
+    imageUrl:
+      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-sentinel-oB3Sy24x4YcFKiYe2oRcLq.webp",
     content: `<h2>The Speedbump Problem</h2>
 <p>Every encryption system we have today is a mathematical speedbump. RSA, AES, ECC — these are all problems that are <em>hard enough</em> to buy us time. But they are not physically impossible to crack. Given enough compute, or a sufficiently powerful quantum computer, they fall.</p>
 <p>This is the fundamental weakness of classical cryptography: it is a race between the encryptor and the attacker. And quantum computers are about to change the rules of that race forever.</p>
@@ -63,6 +67,8 @@ const seedArticles = [
     title: "Quantum Computing and the End of Classical Encryption",
     excerpt:
       "When quantum computers reach sufficient scale, RSA and ECC will fall. Understanding what comes next — and why post-quantum cryptography matters now.",
+    imageUrl:
+      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-encryption-Gkuo3Tp49jWevafMiaPCjw.webp",
     content: `<h2>The Quantum Threat to Encryption</h2>
 <p>Modern encryption relies on mathematical problems that are computationally hard for classical computers. RSA encryption depends on the difficulty of factoring large numbers. A classical computer would take millions of years to factor a 2048-bit RSA key. A sufficiently powerful quantum computer could do it in hours.</p>
 <p>This is not a theoretical concern. The NSA, NIST, and major technology companies are actively preparing for the post-quantum transition. NIST finalized its first set of post-quantum cryptographic standards in 2024.</p>
@@ -85,6 +91,8 @@ const seedArticles = [
     title: "Superposition and Neural Networks: Where Physics Meets Machine Learning",
     excerpt:
       "Quantum superposition allows a system to exist in multiple states simultaneously. Could this principle transform how we build and train AI systems?",
+    imageUrl:
+      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/superposition-neural-oAacFHjvJcfPHVpx7wQD5r.webp",
     content: `<h2>What is Quantum Superposition?</h2>
 <p>In classical computing, a bit is either 0 or 1. A quantum bit (qubit) can exist as 0, 1, or any superposition of both states simultaneously. This is not a metaphor — it is a fundamental property of quantum systems described by quantum mechanics.</p>
 <p>When we measure a qubit, the superposition collapses to a definite state. But before measurement, the qubit genuinely occupies multiple states at once, each with a certain probability amplitude.</p>
@@ -107,6 +115,8 @@ const seedArticles = [
     title: "Quantum Advantage: Why Quantum Computers Are Exponentially Faster",
     excerpt:
       "Quantum computers don't just run faster — they operate on fundamentally different computational principles. Here's why that matters for AI and beyond.",
+    imageUrl:
+      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-advantage-e2kEVMfpWH2zP2wbENpJGB.webp",
     content: `<h2>Classical vs Quantum Computing</h2>
 <p>Classical computers process information as bits — binary values of 0 or 1. Every operation is sequential or parallelized across many cores. Quantum computers use qubits, which can exist in superposition, and leverage quantum interference and entanglement to perform certain computations in ways that have no classical equivalent.</p>
 <h2>Exponential Parallelism</h2>
@@ -128,6 +138,8 @@ const seedArticles = [
     title: "Anti-Tampering by Physics: How Quantum Entanglement Secures AI Models",
     excerpt:
       "What if an AI model could detect unauthorized modification at the physical level — not through software checks, but through quantum entanglement?",
+    imageUrl:
+      "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-entanglement-atcbTBeKRPQGBprnAm6cHb.webp",
     content: `<h2>The Problem with Software Security</h2>
 <p>Every software security system can, in principle, be bypassed. Checksums can be forged. Hash functions can be precomputed. Even cryptographic signatures depend on the security of the key management system. Software security is always a mathematical problem — and mathematical problems can always be solved given enough resources.</p>
 <h2>Quantum Entanglement as a Security Primitive</h2>
@@ -149,7 +161,12 @@ const seedArticles = [
 
 try {
   for (const article of seedArticles) {
-    await db.insert(articles).values(article).onDuplicateKeyUpdate({ set: { title: article.title } });
+    await db.insert(articles).values(article).onDuplicateKeyUpdate({
+      set: {
+        title: article.title,
+        imageUrl: article.imageUrl,
+      },
+    });
   }
   console.log("Seeded", seedArticles.length, "articles successfully");
 } catch (err: unknown) {

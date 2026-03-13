@@ -9,6 +9,8 @@ import Articles from "./pages/Articles";
 import ArticleDetail from "./pages/ArticleDetail";
 import Philosophy from "./pages/Philosophy";
 import Legal from "./pages/Legal";
+import Careers from "./pages/Careers";
+import Investors from "./pages/Investors";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
 import AdminArticleEdit from "./pages/AdminArticleEdit";
@@ -30,6 +32,8 @@ function Router() {
       <Route path={"/articles/:slug"} component={ArticleDetail} />
       <Route path={"/philosophy"} component={Philosophy} />
       <Route path={"/legal"} component={Legal} />
+      <Route path={"/careers"} component={Careers} />
+      <Route path={"/investors"} component={Investors} />
       <Route path={"/admin"} component={AdminLogin} />
       <Route path={"/admin/dashboard"} component={AdminPanel} />
       <Route path={"/admin/articles/new"} component={AdminArticleEdit} />

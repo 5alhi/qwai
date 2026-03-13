@@ -47,11 +47,21 @@
 - [x] Update CORS and cookie settings for qw.ai domain
 
 ## Analytics & SEO Features
-- [ ] Database schema: pageViews and newsletterSubscribers tables
-- [ ] Backend: track page views via tRPC mutation
-- [ ] Backend: newsletter subscribe/unsubscribe procedures
-- [ ] Admin analytics dashboard with charts (page views, top articles, referrers, devices, countries)
-- [ ] Dynamic per-article SEO meta tags and Article JSON-LD structured data
-- [ ] RSS feed at /feed.xml (auto-updated when articles published)
-- [ ] LinkedIn share prompt in admin article editor
-- [ ] Newsletter signup section on homepage
+- [x] Database schema: pageViews and newsletterSubscribers tables
+- [x] Backend: track page views via tRPC mutation
+- [x] Backend: newsletter subscribe/unsubscribe procedures
+- [x] Admin analytics dashboard with charts (page views, top articles, referrers, devices, countries)
+- [x] Dynamic per-article SEO meta tags and Article JSON-LD structured data
+- [x] RSS feed at /feed.xml (auto-updated when articles published)
+- [x] LinkedIn share prompt in admin article editor
+- [x] Newsletter signup section on homepage
+
+## Legitimacy & Visual Identity
+- [x] Logo mark (Q+ψ) icon generated and integrated into navbar/favicon
+- [x] Horizontal logo banner generated
+- [ ] Hero banner image (neural network + quantum computer collision) generated
+- [x] Careers page with "express interest" form
+- [x] Investor Relations page with vision and "express interest" form
+- [ ] Press / Media section in footer
+- [x] Article cover images generated for all 6 seed articles
+- [ ] Quantum/AI image library for future articles
