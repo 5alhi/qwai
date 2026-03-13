@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
-import { ArrowLeft, Save, Eye, EyeOff } from "lucide-react";
+import { ArrowLeft, Save, Eye, EyeOff, Linkedin, Copy, CheckCheck } from "lucide-react";
 import { Link } from "wouter";
 
 const CATEGORIES = [
@@ -135,6 +135,19 @@ export default function AdminArticleEdit() {
   };
 
   const isPending = createMutation.isPending || updateMutation.isPending;
+
+  // LinkedIn share prompt — generated from article fields
+  const [linkedinCopied, setLinkedinCopied] = useState(false);
+  const generateLinkedinPost = () => {
+    const url = `https://qw.ai/articles/${form.slug}`;
+    return `🌊 ${form.title}\n\n${form.excerpt}\n\nRead the full article on qw.ai 👇\n${url}\n\n#QuantumWaveAI #QWAI #QuantumComputing #ArtificialIntelligence #DeepTech`;
+  };
+  const copyLinkedinPost = async () => {
+    await navigator.clipboard.writeText(generateLinkedinPost());
+    setLinkedinCopied(true);
+    setTimeout(() => setLinkedinCopied(false), 2500);
+    toast.success('LinkedIn post copied to clipboard!');
+  };
 
   if (authCheck.isLoading) {
     return (
@@ -351,6 +364,40 @@ export default function AdminArticleEdit() {
                 </Button>
               </Link>
             </div>
+
+            {/* LinkedIn Share Prompt */}
+            {form.title && form.slug && (
+              <div className="mt-6 rounded-xl border border-[#0077b5]/30 bg-[#0077b5]/5 p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <Linkedin size={18} className="text-[#0077b5]" />
+                  <span className="font-semibold text-foreground text-sm">LinkedIn Share Prompt</span>
+                  <span className="text-xs text-muted-foreground ml-auto">Auto-generated from article</span>
+                </div>
+                <pre className="text-xs text-muted-foreground whitespace-pre-wrap font-mono bg-background/50 rounded-lg p-3 mb-3 border border-border leading-relaxed">{generateLinkedinPost()}</pre>
+                <div className="flex gap-2">
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    className="gap-2 border-[#0077b5]/40 text-[#0077b5] hover:bg-[#0077b5]/10"
+                    onClick={copyLinkedinPost}
+                  >
+                    {linkedinCopied ? <CheckCheck size={14} /> : <Copy size={14} />}
+                    {linkedinCopied ? 'Copied!' : 'Copy Post'}
+                  </Button>
+                  <a
+                    href={`https://www.linkedin.com/feed/?shareActive=true`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button type="button" size="sm" className="gap-2 bg-[#0077b5] hover:bg-[#0077b5]/90 text-white">
+                      <Linkedin size={14} />
+                      Open LinkedIn
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            )}
           </form>
         )}
       </main>

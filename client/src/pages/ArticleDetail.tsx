@@ -4,14 +4,58 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, Calendar, User, ExternalLink } from "lucide-react";
+import { usePageTracker } from "@/hooks/usePageTracker";
+import { useEffect } from "react";
 
 export default function ArticleDetail() {
   const { slug } = useParams<{ slug: string }>();
+  usePageTracker(slug);
 
   const articleQuery = trpc.articles.bySlug.useQuery(
     { slug: slug ?? "" },
     { enabled: !!slug }
   );
+
+  // Update document title and meta tags when article loads
+  useEffect(() => {
+    if (articleQuery.data) {
+      const a = articleQuery.data;
+      document.title = `${a.title} | qw.ai`;
+      const setMeta = (name: string, content: string, prop = false) => {
+        const attr = prop ? 'property' : 'name';
+        let el = document.querySelector(`meta[${attr}='${name}']`) as HTMLMetaElement | null;
+        if (!el) { el = document.createElement('meta'); el.setAttribute(attr, name); document.head.appendChild(el); }
+        el.setAttribute('content', content);
+      };
+      setMeta('description', a.excerpt);
+      setMeta('og:title', `${a.title} | qw.ai`, true);
+      setMeta('og:description', a.excerpt, true);
+      setMeta('og:url', `https://qw.ai/articles/${a.slug}`, true);
+      setMeta('og:type', 'article', true);
+      if (a.imageUrl) setMeta('og:image', a.imageUrl, true);
+      setMeta('twitter:title', `${a.title} | qw.ai`);
+      setMeta('twitter:description', a.excerpt);
+      // Add canonical link
+      let canonical = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
+      if (!canonical) { canonical = document.createElement('link'); canonical.setAttribute('rel', 'canonical'); document.head.appendChild(canonical); }
+      canonical.setAttribute('href', `https://qw.ai/articles/${a.slug}`);
+      // Article JSON-LD
+      let ld = document.getElementById('article-jsonld') as HTMLScriptElement | null;
+      if (!ld) { ld = document.createElement('script') as HTMLScriptElement; ld.id = 'article-jsonld'; ld.type = 'application/ld+json'; document.head.appendChild(ld); }
+      ld.textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": a.title,
+        "description": a.excerpt,
+        "author": { "@type": "Person", "name": a.author },
+        "datePublished": a.publishedAt,
+        "publisher": { "@type": "Organization", "name": "Quantum Wave AI", "url": "https://qw.ai" },
+        "url": `https://qw.ai/articles/${a.slug}`,
+        ...(a.imageUrl ? { "image": a.imageUrl } : {}),
+      });
+    }
+    return () => { document.title = 'Quantum Wave AI | qw.ai'; };
+  }, [articleQuery.data]);
 
   if (articleQuery.isLoading) {
     return (

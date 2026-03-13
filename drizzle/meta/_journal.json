@@ -15,6 +15,13 @@
       "when": 1773316874062,
       "tag": "0001_colossal_stardust",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1773367803496,
+      "tag": "0002_chunky_black_tom",
+      "breakpoints": true
     }
   ]
 }

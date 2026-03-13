@@ -5,8 +5,13 @@ import {
   createArticle,
   deleteArticle,
   getAllArticles,
+  getAllSubscribers,
+  getAnalyticsSummary,
   getArticleBySlug,
   getPublishedArticles,
+  getSubscriberCount,
+  subscribeNewsletter,
+  trackPageView,
   updateArticle,
 } from "./db";
 import { COOKIE_NAME } from "@shared/const";
@@ -72,7 +77,6 @@ export const appRouter = router({
         if (input.password !== ADMIN_PASSWORD) {
           throw new TRPCError({ code: "UNAUTHORIZED", message: "Incorrect password" });
         }
-        // Issue a signed JWT — no database, no cookies
         const token = await new SignJWT({ role: "admin" })
           .setProtectedHeader({ alg: "HS256" })
           .setAudience("qwai-admin")
@@ -82,7 +86,6 @@ export const appRouter = router({
         return { success: true, token };
       }),
 
-    // Verify token is still valid (used by frontend auth check)
     check: publicProcedure
       .input(z.object({ token: z.string().optional() }))
       .query(async ({ input }) => {
@@ -158,6 +161,64 @@ export const appRouter = router({
           publishedAt: input.published ? new Date() : undefined,
         });
       }),
+  }),
+
+  // ─── Analytics (admin only) ───────────────────────────────────────────────────
+  analytics: router({
+    track: publicProcedure
+      .input(z.object({
+        path: z.string().max(512),
+        referrer: z.string().max(1024).optional(),
+        userAgent: z.string().optional(),
+        device: z.enum(["desktop", "mobile", "tablet"]).optional(),
+        sessionId: z.string().max(128).optional(),
+        articleSlug: z.string().max(256).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await trackPageView({
+          path: input.path,
+          referrer: input.referrer ?? null,
+          userAgent: input.userAgent ?? null,
+          device: input.device ?? "desktop",
+          sessionId: input.sessionId ?? null,
+          articleSlug: input.articleSlug ?? null,
+          country: null,
+        });
+        return { success: true };
+      }),
+
+    summary: adminProcedure
+      .input(z.object({ days: z.number().min(1).max(365).default(30) }))
+      .query(async ({ input }) => {
+        return getAnalyticsSummary(input.days);
+      }),
+
+    subscribers: adminProcedure.query(async () => {
+      return getAllSubscribers();
+    }),
+  }),
+
+  // ─── Newsletter ───────────────────────────────────────────────────────────────
+  newsletter: router({
+    subscribe: publicProcedure
+      .input(z.object({
+        email: z.string().email(),
+        name: z.string().max(256).optional(),
+        source: z.string().max(128).optional(),
+      }))
+      .mutation(async ({ input }) => {
+        await subscribeNewsletter({
+          email: input.email,
+          name: input.name ?? null,
+          source: input.source ?? "homepage",
+          active: true,
+        });
+        return { success: true };
+      }),
+
+    count: publicProcedure.query(async () => {
+      return { count: await getSubscriberCount() };
+    }),
   }),
 });
 

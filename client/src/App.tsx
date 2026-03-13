@@ -12,6 +12,7 @@ import Legal from "./pages/Legal";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
 import AdminArticleEdit from "./pages/AdminArticleEdit";
+import AdminAnalytics from "./pages/AdminAnalytics";
 
 /**
  * Design Philosophy: Quantum Futurism with Premium Startup Aesthetic
@@ -33,6 +34,7 @@ function Router() {
       <Route path={"/admin/dashboard"} component={AdminPanel} />
       <Route path={"/admin/articles/new"} component={AdminArticleEdit} />
       <Route path={"/admin/articles/:id/edit"} component={AdminArticleEdit} />
+      <Route path={"/admin/analytics"} component={AdminAnalytics} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

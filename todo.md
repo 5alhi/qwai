@@ -39,9 +39,19 @@
 - [ ] Add more articles via admin panel
 - [ ] Add contact/newsletter section
 - [ ] Social sharing buttons on article detail pages
-- [ ] Update all domain references to https://qw.ai
-- [ ] Update HTML meta tags, title, description for qw.ai
-- [ ] Add Open Graph / Twitter Card meta tags for qw.ai
-- [ ] Add canonical URL tags pointing to qw.ai
-- [ ] Create/update robots.txt and sitemap.xml for qw.ai
-- [ ] Update CORS and cookie settings for qw.ai domain
+- [x] Update all domain references to https://qw.ai
+- [x] Update HTML meta tags, title, description for qw.ai
+- [x] Add Open Graph / Twitter Card meta tags for qw.ai
+- [x] Add canonical URL tags pointing to qw.ai
+- [x] Create/update robots.txt and sitemap.xml for qw.ai
+- [x] Update CORS and cookie settings for qw.ai domain
+
+## Analytics & SEO Features
+- [ ] Database schema: pageViews and newsletterSubscribers tables
+- [ ] Backend: track page views via tRPC mutation
+- [ ] Backend: newsletter subscribe/unsubscribe procedures
+- [ ] Admin analytics dashboard with charts (page views, top articles, referrers, devices, countries)
+- [ ] Dynamic per-article SEO meta tags and Article JSON-LD structured data
+- [ ] RSS feed at /feed.xml (auto-updated when articles published)
+- [ ] LinkedIn share prompt in admin article editor
+- [ ] Newsletter signup section on homepage

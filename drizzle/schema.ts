@@ -10,16 +10,9 @@ import {
 
 /**
  * Core user table backing auth flow.
- * Extend this file with additional tables as your product grows.
- * Columns use camelCase to match both database fields and generated types.
  */
 export const users = mysqlTable("users", {
-  /**
-   * Surrogate primary key. Auto-incremented numeric value managed by the database.
-   * Use this for relations between tables.
-   */
   id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
@@ -35,7 +28,6 @@ export type InsertUser = typeof users.$inferInsert;
 
 /**
  * Articles table — stores all blog/insight articles for qw.ai
- * Easily updatable via the admin panel at /admin
  */
 export const articles = mysqlTable("articles", {
   id: int("id").autoincrement().primaryKey(),
@@ -68,3 +60,36 @@ export const adminSessions = mysqlTable("admin_sessions", {
 });
 
 export type AdminSession = typeof adminSessions.$inferSelect;
+
+/**
+ * Page views — anonymous visitor tracking for analytics
+ */
+export const pageViews = mysqlTable("page_views", {
+  id: int("id").autoincrement().primaryKey(),
+  path: varchar("path", { length: 512 }).notNull(),
+  referrer: varchar("referrer", { length: 1024 }),
+  userAgent: text("userAgent"),
+  country: varchar("country", { length: 128 }),
+  device: mysqlEnum("device", ["desktop", "mobile", "tablet"]).default("desktop"),
+  sessionId: varchar("sessionId", { length: 128 }),
+  articleSlug: varchar("articleSlug", { length: 256 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type PageView = typeof pageViews.$inferSelect;
+export type InsertPageView = typeof pageViews.$inferInsert;
+
+/**
+ * Newsletter subscribers — email capture for updates
+ */
+export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  name: varchar("name", { length: 256 }),
+  subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
+  active: boolean("active").default(true).notNull(),
+  source: varchar("source", { length: 128 }).default("homepage"),
+});
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;

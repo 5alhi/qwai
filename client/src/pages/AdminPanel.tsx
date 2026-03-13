@@ -14,6 +14,7 @@ import {
   Star,
   StarOff,
   ExternalLink,
+  TrendingUp,
 } from "lucide-react";
 
 export const ADMIN_TOKEN_KEY = "qwai_admin_token";
@@ -101,6 +102,12 @@ export default function AdminPanel() {
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <Link href="/admin/analytics">
+              <Button variant="outline" size="sm" className="gap-2 border-border text-[#00d4ff] border-[#00d4ff]/40 hover:bg-[#00d4ff]/10">
+                <TrendingUp size={14} />
+                Analytics
+              </Button>
+            </Link>
             <a href="/" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm" className="gap-2 border-border">
                 <ExternalLink size={14} />

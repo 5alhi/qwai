@@ -2,8 +2,12 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Brain, Cpu, Shield, Atom, Waves } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Zap, Brain, Cpu, Shield, Atom, Waves, Mail, CheckCircle } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
+import { usePageTracker } from "@/hooks/usePageTracker";
+import { toast } from "sonner";
 
 const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/quantum-hero-bg_66e85d4b.png";
 const CIRCUIT_BG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/tech-circuit-pattern_15b4cc8d.png";
@@ -49,9 +53,27 @@ const pillars = [
 ];
 
 export default function Home() {
+  usePageTracker();
   const articlesQuery = trpc.articles.list.useQuery();
   const featuredArticles = (articlesQuery.data ?? []).filter((a) => a.featured).slice(0, 3);
   const recentArticles = (articlesQuery.data ?? []).slice(0, 6);
+
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const subscribeMutation = trpc.newsletter.subscribe.useMutation({
+    onSuccess: () => {
+      setSubscribed(true);
+      setEmail("");
+      toast.success("You're on the list! We'll notify you when new QWAI articles drop.");
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !email.includes("@")) { toast.error("Please enter a valid email address."); return; }
+    subscribeMutation.mutate({ email });
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden flex flex-col">
@@ -298,6 +320,49 @@ export default function Home() {
               </Button>
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* ─── Newsletter Signup ────────────────────────────────────────────────── */}
+      <section className="py-20 bg-gradient-to-b from-background to-card/30 border-t border-border/50">
+        <div className="container max-w-2xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-accent/30 bg-accent/5 text-accent text-sm font-mono mb-6">
+            <Mail size={14} />
+            Stay in the Quantum Loop
+          </div>
+          <h2 className="text-3xl font-bold mb-4 text-foreground">
+            Get notified when new <span className="text-accent">QWAI articles</span> drop
+          </h2>
+          <p className="text-muted-foreground mb-8 leading-relaxed">
+            No spam. No noise. Just deep-tech thinking on quantum AI convergence — delivered when it matters.
+          </p>
+          {subscribed ? (
+            <div className="flex items-center justify-center gap-3 text-green-400 text-lg font-semibold">
+              <CheckCircle size={24} />
+              You're on the list!
+            </div>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="bg-input border-border text-foreground flex-1"
+                required
+              />
+              <Button
+                type="submit"
+                className="bg-accent text-background hover:bg-accent/90 font-semibold whitespace-nowrap"
+                disabled={subscribeMutation.isPending}
+              >
+                {subscribeMutation.isPending ? "Subscribing..." : "Notify Me →"}
+              </Button>
+            </form>
+          )}
+          <p className="text-xs text-muted-foreground/50 mt-4">
+            Unsubscribe at any time. Your email is never shared.
+          </p>
         </div>
       </section>
 
