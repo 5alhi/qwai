@@ -4,43 +4,38 @@ import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, Mail, FileText, Image, Package } from "lucide-react";
 import { usePageTracker } from "@/hooks/usePageTracker";
 
+// ── Official v10 Logo Assets (locked) ──────────────────────────────────────
 const LOGO_ICON_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v10-icon_267c3c42.png";
-const LOGO_TRANSPARENT_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v10-icon_267c3c42.png";
-const LOGO_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_ac6d096c.png";
-const LOGO_ICON_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-v4_01bf6b82.svg";
-const LOGO_TRANSPARENT_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-transparent_a1f9e017.svg";
-const LOGO_BANNER_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_efe8705b.svg";
+const LOGO_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-press-banner-v10_71cee136.png";
+const OG_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-og-banner-v10_ca21d5eb.png";
 const HERO_BANNER = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-hero-banner-bcVfhu6MKXoeg8zGX7Ebcw.webp";
 
 const logoAssets = [
   {
-    label: "Logo Mark — Dark Background",
-    description: "Square icon with dark background. Use on light surfaces or as app icon.",
+    label: "Logo Mark (Official v10)",
+    description: "Official QWAI icon mark — circuit board Q ring with neon ECG wave. Transparent background. Use on any dark surface.",
     preview: LOGO_ICON_PNG,
-    bg: "bg-background",
-    downloads: [
-      { label: "PNG (512×512)", url: LOGO_ICON_PNG, ext: "png" },
-      { label: "SVG (Vector)", url: LOGO_ICON_SVG, ext: "svg" },
-    ],
-  },
-  {
-    label: "Logo Mark — Transparent",
-    description: "Icon with transparent background. Use on dark-coloured surfaces.",
-    preview: LOGO_TRANSPARENT_PNG,
     bg: "bg-[#080810]",
     downloads: [
-      { label: "PNG (512×512)", url: LOGO_TRANSPARENT_PNG, ext: "png" },
-      { label: "SVG (Vector)", url: LOGO_TRANSPARENT_SVG, ext: "svg" },
+      { label: "PNG (512×512)", url: LOGO_ICON_PNG, ext: "png" },
     ],
   },
   {
-    label: "Horizontal Banner",
-    description: "Logo mark + qw.ai wordmark. Use in headers, email signatures, and presentations.",
+    label: "Press Kit Banner",
+    description: "Horizontal banner with icon + QWAI wordmark. Use in press releases, email signatures, and presentations.",
     preview: LOGO_BANNER_PNG,
     bg: "bg-[#080810]",
     downloads: [
-      { label: "PNG (500×120)", url: LOGO_BANNER_PNG, ext: "png" },
-      { label: "SVG (Vector)", url: LOGO_BANNER_SVG, ext: "svg" },
+      { label: "PNG (1600×500)", url: LOGO_BANNER_PNG, ext: "png" },
+    ],
+  },
+  {
+    label: "Social / OG Banner",
+    description: "1200×630 banner optimised for LinkedIn, X/Twitter, and Open Graph previews.",
+    preview: OG_BANNER_PNG,
+    bg: "bg-[#080810]",
+    downloads: [
+      { label: "PNG (1200×630)", url: OG_BANNER_PNG, ext: "png" },
     ],
   },
   {

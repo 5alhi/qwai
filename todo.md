@@ -66,3 +66,10 @@
 - [x] Press / Media Kit page (/press) with logo downloads, brand colours, typography, company description
 - [x] Article cover images generated for all 6 seed articles
 - [ ] Quantum/AI image library for future articles
+
+## Logo v10 Lock-in (Official Mark)
+- [x] Generate new OG/Twitter social banner (1200x630) with v10 logo
+- [x] Generate new Press Kit horizontal banner with v10 logo + QWAI text
+- [x] Update OG/Twitter image tags in index.html to new banner
+- [x] Update Press page banner and remove old SVG references
+- [x] Favicon.ico updated to v10 icon (16/32/48px multi-size)
