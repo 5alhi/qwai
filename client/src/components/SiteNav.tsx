@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-const LOGO_MARK_URL = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-icon_68377633.png";
+const LOGO_MARK_URL = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v10-icon_267c3c42.png";
 
 export default function SiteNav() {
   const [location] = useLocation();
