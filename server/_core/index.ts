@@ -59,7 +59,7 @@ async function startServer() {
   <channel>
     <title>Quantum Wave AI | qw.ai</title>
     <link>https://qw.ai</link>
-    <description>Exploring the convergence of quantum wave functions and artificial intelligence — where neural networks meet quantum superposition.</description>
+    <description>Exploring the convergence of quantum wave functions and artificial intelligence, where neural networks meet quantum superposition.</description>
     <language>en-us</language>
     <managingEditor>hello@qw.ai (Samer Salhi)</managingEditor>
     <webMaster>hello@qw.ai (Samer Salhi)</webMaster>

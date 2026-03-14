@@ -13,7 +13,7 @@ const HERO_BANNER = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxo
 const logoAssets = [
   {
     label: "Logo Mark (Official v10)",
-    description: "Official QWAI icon mark — circuit board Q ring with neon ECG wave. Transparent background. Use on any dark surface.",
+    description: "Official QWAI icon mark: circuit board Q ring with neon ECG wave. Transparent background. Use on any dark surface.",
     preview: LOGO_ICON_PNG,
     bg: "bg-[#080810]",
     downloads: [
@@ -126,10 +126,10 @@ export default function Press() {
             <div className="bg-card/40 border border-border/50 rounded-2xl p-6 space-y-3">
               <div className="text-xs font-mono text-accent uppercase tracking-widest">Short Paragraph</div>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                QWAI is an early-stage research initiative founded by Samer Salhi, exploring the theoretical intersection of quantum wave mechanics and artificial intelligence. The framework proposes that both quantum systems and neural networks share a fundamental convergence point — where the wave function ψ becomes the native representation of machine intelligence, enabling physically immune AI, exponential energy efficiency, and post-quantum cryptographic security.
+                QWAI is an early-stage research initiative founded by Samer Salhi, exploring the theoretical intersection of quantum wave mechanics and artificial intelligence. The framework proposes that both quantum systems and neural networks share a fundamental convergence point, where the wave function ψ becomes the native representation of machine intelligence, enabling physically immune AI, exponential energy efficiency, and post-quantum cryptographic security.
               </p>
               <button
-                onClick={() => navigator.clipboard.writeText("QWAI is an early-stage research initiative founded by Samer Salhi, exploring the theoretical intersection of quantum wave mechanics and artificial intelligence. The framework proposes that both quantum systems and neural networks share a fundamental convergence point — where the wave function ψ becomes the native representation of machine intelligence, enabling physically immune AI, exponential energy efficiency, and post-quantum cryptographic security.")}
+                onClick={() => navigator.clipboard.writeText("QWAI is an early-stage research initiative founded by Samer Salhi, exploring the theoretical intersection of quantum wave mechanics and artificial intelligence. The framework proposes that both quantum systems and neural networks share a fundamental convergence point, where the wave function ψ becomes the native representation of machine intelligence, enabling physically immune AI, exponential energy efficiency, and post-quantum cryptographic security.")}
                 className="text-xs text-accent hover:text-accent/80 transition-colors"
               >
                 Copy text

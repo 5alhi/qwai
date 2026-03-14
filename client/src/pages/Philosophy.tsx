@@ -9,7 +9,7 @@ const philosophyPillars = [
     color: "text-accent",
     glow: "glow-cyan",
     description:
-      "In quantum mechanics, ψ (psi) represents the wave function — a mathematical description of the quantum state of a system. QWAI borrows this concept: instead of encoding data as discrete bits, we theorize encoding it as probability amplitudes across a wavefunction. The result is a system that holds multiple states simultaneously until observation collapses it into a definitive answer.",
+      "In quantum mechanics, ψ (psi) represents the wave function, a mathematical description of the quantum state of a system. QWAI borrows this concept: instead of encoding data as discrete bits, we theorize encoding it as probability amplitudes across a wavefunction. The result is a system that holds multiple states simultaneously until observation collapses it into a definitive answer.",
   },
   {
     symbol: "⊗",
@@ -17,7 +17,7 @@ const philosophyPillars = [
     color: "text-purple-400",
     glow: "glow-magenta",
     description:
-      "Classical neural networks process sequentially. Quantum superposition allows a qubit to exist as 0 and 1 simultaneously. Applied to AI, this means a QWAI system could evaluate exponentially more hypotheses in parallel — not by brute-force scaling of GPUs, but by leveraging the fundamental physics of quantum states.",
+      "Classical neural networks process sequentially. Quantum superposition allows a qubit to exist as 0 and 1 simultaneously. Applied to AI, this means a QWAI system could evaluate exponentially more hypotheses in parallel, not by brute-force scaling of GPUs, but by leveraging the fundamental physics of quantum states.",
   },
   {
     symbol: "∞",
@@ -25,7 +25,7 @@ const philosophyPillars = [
     color: "text-cyan-400",
     glow: "glow-cyan",
     description:
-      "Neural networks fail at the boundary of their training data — the edge where patterns dissolve into noise. Quantum wavefunctions collapse at the moment of measurement. QWAI theorizes that these two failure modes are the same phenomenon: both systems reach a point of maximum uncertainty. This convergence is not a weakness — it is the interface where the two systems can be unified.",
+      "Neural networks fail at the boundary of their training data, the edge where patterns dissolve into noise. Quantum wavefunctions collapse at the moment of measurement. QWAI theorizes that these two failure modes are the same phenomenon: both systems reach a point of maximum uncertainty. This convergence is not a weakness; it is the interface where the two systems can be unified.",
   },
   {
     symbol: "⊕",
@@ -33,7 +33,7 @@ const philosophyPillars = [
     color: "text-blue-400",
     glow: "glow-cyan",
     description:
-      "Quantum interference allows probability amplitudes to reinforce or cancel each other. In QWAI, this maps to attention mechanisms in transformers — where certain features are amplified and others suppressed. By grounding attention in quantum interference mathematics, we theorize a more physically principled and energy-efficient form of selective reasoning.",
+      "Quantum interference allows probability amplitudes to reinforce or cancel each other. In QWAI, this maps to attention mechanisms in transformers, where certain features are amplified and others suppressed. By grounding attention in quantum interference mathematics, we theorize a more physically principled and energy-efficient form of selective reasoning.",
   },
   {
     symbol: "🔒",
@@ -41,7 +41,7 @@ const philosophyPillars = [
     color: "text-green-400",
     glow: "",
     description:
-      "Current encryption is a mathematical speedbump — hard enough to buy time, but not physically impossible to crack. QWAI's Quantum Sentinel concept proposes a world where privacy is native: Blind Training allows AI to learn from data without ever reading it in plaintext. Entanglement Fidelity ensures that if a model weight is tampered with, the system physically collapses and alerts the network. Math can be solved. Code can be cracked. But you cannot collapse a wave without being detected.",
+      "Current encryption is a mathematical speedbump: hard enough to buy time, but not physically impossible to crack. QWAI's Quantum Sentinel concept proposes a world where privacy is native: Blind Training allows AI to learn from data without ever reading it in plaintext. Entanglement Fidelity ensures that if a model weight is tampered with, the system physically collapses and alerts the network. Math can be solved. Code can be cracked. But you cannot collapse a wave without being detected.",
   },
   {
     symbol: "⚡",
@@ -49,7 +49,7 @@ const philosophyPillars = [
     color: "text-yellow-400",
     glow: "",
     description:
-      "The AI industry is building Gigawatt-scale data centers to train trillion-parameter models. This is unsustainable. QWAI's Energy Arbitrage model proposes encoding massive datasets into ψ wavefunctions — making AI exponentially more efficient through quantum superposition and interference. The future of intelligence is not a power struggle. It is a collapsible wave.",
+      "The AI industry is building Gigawatt-scale data centers to train trillion-parameter models. This is unsustainable. QWAI's Energy Arbitrage model proposes encoding massive datasets into ψ wavefunctions, making AI exponentially more efficient through quantum superposition and interference. The future of intelligence is not a power struggle; it is a collapsible wave.",
   },
 ];
 
@@ -60,23 +60,23 @@ const quantumFacts = [
   },
   {
     title: "Tamper-Proof Systems",
-    body: "Quantum entanglement creates correlations between particles that cannot be replicated or forged. Systems built on entanglement can detect any unauthorized access or modification at the physical level — not just the software level.",
+    body: "Quantum entanglement creates correlations between particles that cannot be replicated or forged. Systems built on entanglement can detect any unauthorized access or modification at the physical level, not just the software level.",
   },
   {
     title: "Exponential Processing",
-    body: "A quantum computer with 300 qubits can represent more states simultaneously than there are atoms in the observable universe. For certain problem classes — optimization, simulation, cryptanalysis — this represents an exponential speedup over classical computation.",
+    body: "A quantum computer with 300 qubits can represent more states simultaneously than there are atoms in the observable universe. For certain problem classes (optimization, simulation, cryptanalysis) this represents an exponential speedup over classical computation.",
   },
   {
     title: "Quantum Supremacy",
-    body: "In 2019, Google's Sycamore processor performed a specific calculation in 200 seconds that would take the world's most powerful classical supercomputer approximately 10,000 years. This milestone demonstrated that quantum advantage is not theoretical — it is real.",
+    body: "In 2019, Google's Sycamore processor performed a specific calculation in 200 seconds that would take the world's most powerful classical supercomputer approximately 10,000 years. This milestone demonstrated that quantum advantage is not theoretical; it is real.",
   },
   {
     title: "Post-Quantum Cryptography",
-    body: "When sufficiently powerful quantum computers arrive, they will break RSA and ECC encryption — the backbone of internet security. NIST has already standardized post-quantum cryptographic algorithms to prepare for this transition.",
+    body: "When sufficiently powerful quantum computers arrive, they will break RSA and ECC encryption, the backbone of internet security. NIST has already standardized post-quantum cryptographic algorithms to prepare for this transition.",
   },
   {
     title: "Quantum Machine Learning",
-    body: "Quantum algorithms like HHL (Harrow-Hassidim-Lloyd) offer exponential speedups for linear algebra operations — the mathematical foundation of neural networks. This is the theoretical basis for quantum-accelerated AI training.",
+    body: "Quantum algorithms like HHL (Harrow-Hassidim-Lloyd) offer exponential speedups for linear algebra operations, the mathematical foundation of neural networks. This is the theoretical basis for quantum-accelerated AI training.",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function Philosophy() {
             The Way of <span className="text-accent">QWAI</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A theoretical exploration of where quantum wave mechanics and artificial neural networks converge — and what emerges at the boundary where both systems reach their limits.
+            A theoretical exploration of where quantum wave mechanics and artificial neural networks converge, and what emerges at the boundary where both systems reach their limits.
           </p>
           <div className="mt-8 flex items-center justify-center gap-3 text-sm text-muted-foreground/60">
             <span>By</span>
@@ -127,13 +127,13 @@ export default function Philosophy() {
             </h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Neural networks fail at the edge of their training distribution — the boundary where learned patterns dissolve into uncertainty. Quantum wavefunctions collapse at the moment of measurement — the boundary where quantum superposition resolves into a classical state. <strong className="text-foreground">QWAI theorizes that these are not two separate problems. They are the same problem, expressed in two different physical systems.</strong>
+                Neural networks fail at the edge of their training distribution, the boundary where learned patterns dissolve into uncertainty. Quantum wavefunctions collapse at the moment of measurement, the boundary where quantum superposition resolves into a classical state. <strong className="text-foreground">QWAI theorizes that these are not two separate problems. They are the same problem, expressed in two different physical systems.</strong>
               </p>
               <p>
-                The convergence point — where the neural network's gradient vanishes and the wavefunction collapses — is not a dead end. It is an interface. QWAI proposes that by encoding neural network states as quantum wavefunctions, we can leverage quantum superposition to explore the uncertainty space that classical AI cannot navigate, and use quantum measurement to collapse that exploration into actionable intelligence.
+                The convergence point, where the neural network's gradient vanishes and the wavefunction collapses, is not a dead end. It is an interface. QWAI proposes that by encoding neural network states as quantum wavefunctions, we can leverage quantum superposition to explore the uncertainty space that classical AI cannot navigate, and use quantum measurement to collapse that exploration into actionable intelligence.
               </p>
               <p>
-                This is not about making AI faster by adding quantum hardware. It is about making AI <em>fundamentally different</em> by grounding it in quantum physics — achieving not just speed, but physical immunity, energy efficiency, and a new class of reasoning that classical systems cannot replicate.
+                This is not about making AI faster by adding quantum hardware. It is about making AI <em>fundamentally different</em> by grounding it in quantum physics, achieving not just speed, but physical immunity, energy efficiency, and a new class of reasoning that classical systems cannot replicate.
               </p>
             </div>
           </div>

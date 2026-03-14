@@ -17,13 +17,13 @@ const pillars = [
   {
     icon: Atom,
     title: "Quantum Superposition",
-    desc: "Encode AI states as quantum wavefunctions — holding exponentially more hypotheses simultaneously than classical neural networks.",
+    desc: "Encode AI states as quantum wavefunctions, holding exponentially more hypotheses simultaneously than classical neural networks.",
     color: "text-accent",
   },
   {
     icon: Brain,
     title: "Neural-Quantum Convergence",
-    desc: "Where neural networks fail at the edge of training data, and wavefunctions collapse at measurement — QWAI theorizes these are the same phenomenon.",
+    desc: "Where neural networks fail at the edge of training data, and wavefunctions collapse at measurement. QWAI theorizes these are the same phenomenon.",
     color: "text-purple-400",
   },
   {
@@ -35,19 +35,19 @@ const pillars = [
   {
     icon: Waves,
     title: "Wave Function Intelligence",
-    desc: "ψ (psi) — the quantum state descriptor — becomes the fundamental unit of AI representation, replacing discrete binary weights with probability amplitudes.",
+    desc: "ψ (psi), the quantum state descriptor, becomes the fundamental unit of AI representation, replacing discrete binary weights with probability amplitudes.",
     color: "text-cyan-400",
   },
   {
     icon: Zap,
     title: "Energy Arbitrage",
-    desc: "Encoding massive datasets into ψ wavefunctions makes AI exponentially more efficient. The future of intelligence is not a power struggle — it is a collapsible wave.",
+    desc: "Encoding massive datasets into ψ wavefunctions makes AI exponentially more efficient. The future of intelligence is not a power struggle; it is a collapsible wave.",
     color: "text-yellow-400",
   },
   {
     icon: Cpu,
     title: "Post-Quantum Cryptography",
-    desc: "When quantum computers arrive, RSA and ECC fall. QWAI's architecture is built for the post-quantum world — where privacy is native, not bolted on.",
+    desc: "When quantum computers arrive, RSA and ECC fall. QWAI's architecture is built for the post-quantum world, where privacy is native, not bolted on.",
     color: "text-blue-400",
   },
 ];
@@ -121,7 +121,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A theoretical framework exploring the convergence of quantum wave mechanics and artificial neural networks — where both systems reach their limits, and something new emerges.
+              A theoretical framework exploring the convergence of quantum wave mechanics and artificial neural networks, where both systems reach their limits and something new emerges.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
@@ -167,7 +167,7 @@ export default function Home() {
               Six Pillars of <span className="text-accent glow-cyan">QWAI</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              The theoretical foundations that define Quantum Wave AI as a distinct paradigm — not just faster AI, but fundamentally different AI.
+              The theoretical foundations that define Quantum Wave AI as a distinct paradigm: not just faster AI, but fundamentally different AI.
             </p>
           </div>
 
@@ -298,7 +298,7 @@ export default function Home() {
             Follow "The Way of <span className="text-accent">QWAI</span>"
           </h2>
           <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
-            An ongoing LinkedIn series exploring the theoretical foundations of Quantum Wave AI — from the Quantum Green Paradox to the Quantum Sentinel, and beyond.
+            An ongoing LinkedIn series exploring the theoretical foundations of Quantum Wave AI, from the Quantum Green Paradox to the Quantum Sentinel and beyond.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -334,7 +334,7 @@ export default function Home() {
             Get notified when new <span className="text-accent">QWAI articles</span> drop
           </h2>
           <p className="text-muted-foreground mb-8 leading-relaxed">
-            No spam. No noise. Just deep-tech thinking on quantum AI convergence — delivered when it matters.
+            No spam. No noise. Just deep-tech thinking on quantum AI convergence, delivered when it matters.
           </p>
           {subscribed ? (
             <div className="flex items-center justify-center gap-3 text-green-400 text-lg font-semibold">

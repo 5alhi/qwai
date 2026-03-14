@@ -136,7 +136,7 @@ export default function AdminArticleEdit() {
 
   const isPending = createMutation.isPending || updateMutation.isPending;
 
-  // LinkedIn share prompt — generated from article fields
+  // LinkedIn share prompt: generated from article fields
   const [linkedinCopied, setLinkedinCopied] = useState(false);
   const generateLinkedinPost = () => {
     const url = `https://qw.ai/articles/${form.slug}`;

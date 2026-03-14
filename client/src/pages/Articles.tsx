@@ -54,7 +54,7 @@ export default function Articles() {
             QWAI <span className="text-accent glow-cyan">Articles</span>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Exploring the convergence of quantum physics and artificial intelligence — from theoretical foundations to practical implications.
+            Exploring the convergence of quantum physics and artificial intelligence, from theoretical foundations to practical implications.
           </p>
         </div>
       </section>

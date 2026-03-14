@@ -73,3 +73,7 @@
 - [x] Update OG/Twitter image tags in index.html to new banner
 - [x] Update Press page banner and remove old SVG references
 - [x] Favicon.ico updated to v10 icon (16/32/48px multi-size)
+
+## Bug Fixes
+- [x] Fix React error #310 crash on article pages (useState hook moved before conditional returns)
+- [x] Remove all em-dashes from the entire codebase and replace with appropriate punctuation

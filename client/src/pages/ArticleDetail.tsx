@@ -4,13 +4,15 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, Calendar, User, ExternalLink, Share2, Link2, Check } from "lucide-react";
-import { useState as useSocialState } from "react";
+import { useState, useEffect } from "react";
 import { usePageTracker } from "@/hooks/usePageTracker";
-import { useEffect } from "react";
 
 export default function ArticleDetail() {
   const { slug } = useParams<{ slug: string }>();
   usePageTracker(slug);
+
+  // ALL hooks must be declared before any conditional returns
+  const [copied, setCopied] = useState(false);
 
   const articleQuery = trpc.articles.bySlug.useQuery(
     { slug: slug ?? "" },
@@ -63,7 +65,7 @@ export default function ArticleDetail() {
       <div className="min-h-screen bg-background flex flex-col">
         <SiteNav />
         <div className="flex-1 flex items-center justify-center">
-          <div className="text-accent text-6xl wave-animate">ψ</div>
+          <div className="text-accent text-6xl wave-animate">psi</div>
         </div>
         <SiteFooter />
       </div>
@@ -76,7 +78,7 @@ export default function ArticleDetail() {
         <SiteNav />
         <div className="flex-1 flex items-center justify-center text-center">
           <div>
-            <div className="text-accent text-6xl mb-4">ψ</div>
+            <div className="text-accent text-6xl mb-4">psi</div>
             <h2 className="text-2xl font-bold mb-2 text-foreground">Article Not Found</h2>
             <p className="text-muted-foreground mb-6">
               This article may have been moved or is not yet published.
@@ -95,10 +97,9 @@ export default function ArticleDetail() {
   }
 
   const article = articleQuery.data;
-  const [copied, setCopied] = useSocialState(false);
 
   const articleUrl = typeof window !== "undefined" ? window.location.href : `https://qw.ai/articles/${article?.slug ?? ""}`;
-  const shareText = article ? `${article.title} — ${article.excerpt.slice(0, 100)}...` : "";
+  const shareText = article ? `${article.title} - ${article.excerpt.slice(0, 100)}...` : "";
 
   const shareLinkedIn = () => {
     const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`;

@@ -80,12 +80,12 @@ const values = [
   {
     icon: Atom,
     title: "Physics First",
-    description: "Every decision is grounded in physical reality. We don't chase hype — we follow the math.",
+    description: "Every decision is grounded in physical reality. We don't chase hype; we follow the math.",
   },
   {
     icon: Waves,
     title: "Think in Waves",
-    description: "Superposition, interference, entanglement — these aren't metaphors here. They are the architecture.",
+    description: "Superposition, interference, entanglement: these aren't metaphors here. They are the architecture.",
   },
   {
     icon: Network,
@@ -168,10 +168,10 @@ export default function Careers() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            QWAI is in its earliest, most exciting phase — the stage where the right people define what is possible. We are assembling a team of physicists, AI researchers, and engineers who believe the next breakthrough lives at the intersection of quantum waves and artificial intelligence.
+            QWAI is in its earliest, most exciting phase, the stage where the right people define what is possible. We are assembling a team of physicists, AI researchers, and engineers who believe the next breakthrough lives at the intersection of quantum waves and artificial intelligence.
           </p>
           <div className="mt-8 flex flex-wrap gap-4 justify-center text-sm text-muted-foreground">
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" /> Conceptual Stage — Early Team</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" /> Conceptual Stage: Early Team</span>
             <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-pulse" /> Remote-First</span>
             <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Mission-Driven</span>
           </div>
@@ -248,7 +248,7 @@ export default function Careers() {
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-4">Express Your Interest</h2>
             <p className="text-muted-foreground">
-              We're not hiring formally yet — but we're building a list of exceptional people who want to be part of this from the beginning. Leave your details and we'll reach out when the time comes.
+              We're not hiring formally yet, but we're building a list of exceptional people who want to be part of this from the beginning. Leave your details and we'll reach out when the time comes.
             </p>
           </div>
 

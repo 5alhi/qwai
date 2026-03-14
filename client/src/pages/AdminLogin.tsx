@@ -16,7 +16,7 @@ export default function AdminLogin() {
 
   const loginMutation = trpc.admin.login.useMutation({
     onSuccess: (data) => {
-      // Store JWT in localStorage — works reliably behind any reverse proxy
+      // Store JWT in localStorage: works reliably behind any reverse proxy
       localStorage.setItem(ADMIN_TOKEN_KEY, data.token);
       toast.success("Welcome to the QWAI Admin Panel");
       navigate("/admin/dashboard");

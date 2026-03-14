@@ -27,7 +27,7 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
 /**
- * Articles table — stores all blog/insight articles for qw.ai
+ * Articles table: stores all blog/insight articles for qw.ai
  */
 export const articles = mysqlTable("articles", {
   id: int("id").autoincrement().primaryKey(),
@@ -50,7 +50,7 @@ export type Article = typeof articles.$inferSelect;
 export type InsertArticle = typeof articles.$inferInsert;
 
 /**
- * Admin sessions — password-based admin authentication tokens
+ * Admin sessions: password-based admin authentication tokens
  */
 export const adminSessions = mysqlTable("admin_sessions", {
   id: int("id").autoincrement().primaryKey(),
@@ -62,7 +62,7 @@ export const adminSessions = mysqlTable("admin_sessions", {
 export type AdminSession = typeof adminSessions.$inferSelect;
 
 /**
- * Page views — anonymous visitor tracking for analytics
+ * Page views: anonymous visitor tracking for analytics
  */
 export const pageViews = mysqlTable("page_views", {
   id: int("id").autoincrement().primaryKey(),
@@ -80,7 +80,7 @@ export type PageView = typeof pageViews.$inferSelect;
 export type InsertPageView = typeof pageViews.$inferInsert;
 
 /**
- * Newsletter subscribers — email capture for updates
+ * Newsletter subscribers: email capture for updates
  */
 export const newsletterSubscribers = mysqlTable("newsletter_subscribers", {
   id: int("id").autoincrement().primaryKey(),

@@ -13,7 +13,7 @@ export default function SiteFooter() {
               <span className="text-lg font-bold text-foreground">qw.ai</span>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Quantum Wave Artificial Intelligence — exploring the convergence of quantum physics and machine learning.
+              Quantum Wave Artificial Intelligence: exploring the convergence of quantum physics and machine learning.
             </p>
           </div>
 
@@ -42,7 +42,7 @@ export default function SiteFooter() {
                   rel="noopener noreferrer"
                   className="text-xs text-muted-foreground hover:text-accent transition-colors"
                 >
-                  LinkedIn — Samer Salhi
+                  LinkedIn: Samer Salhi
                 </a>
               </li>
             </ul>

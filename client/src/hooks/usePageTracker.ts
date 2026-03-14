@@ -34,7 +34,7 @@ export function usePageTracker(articleSlug?: string) {
     const device = getDevice();
     const sessionId = getSessionId();
 
-    // Fire and forget — don't block rendering
+    // Fire and forget: don't block rendering
     trackMutation.mutate({
       path,
       referrer,

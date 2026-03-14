@@ -22,25 +22,25 @@ const thesisPoints = [
     icon: Atom,
     title: "The Quantum Advantage is Real",
     description:
-      "Quantum computers are not science fiction. Google's Willow chip and Microsoft's Majorana platform have demonstrated computational advantages that classical systems cannot match. The question is no longer if — it's when and who.",
+      "Quantum computers are not science fiction. Google's Willow chip and Microsoft's Majorana platform have demonstrated computational advantages that classical systems cannot match. The question is no longer if; it's when and who.",
   },
   {
     icon: Brain,
     title: "AI Has Hit a Wall",
     description:
-      "Classical neural networks are approaching fundamental limits. Scaling laws are flattening. The next leap in AI capability will not come from more GPUs — it will come from a fundamentally different computational substrate. That substrate is quantum.",
+      "Classical neural networks are approaching fundamental limits. Scaling laws are flattening. The next leap in AI capability will not come from more GPUs; it will come from a fundamentally different computational substrate. That substrate is quantum.",
   },
   {
     icon: Waves,
     title: "The Convergence Point",
     description:
-      "QWAI's core thesis: there exists a precise mathematical point where the neural network fails and the quantum wave function takes over. Finding and engineering that convergence point is the defining challenge — and opportunity — of this decade.",
+      "QWAI's core thesis: there exists a precise mathematical point where the neural network fails and the quantum wave function takes over. Finding and engineering that convergence point is the defining challenge and opportunity of this decade.",
   },
   {
     icon: Lock,
     title: "Unbreakable Security",
     description:
-      "Quantum cryptography offers information-theoretic security — provably unbreakable by any classical or quantum adversary. The market for post-quantum security is projected to exceed $9.5B by 2030.",
+      "Quantum cryptography offers information-theoretic security, provably unbreakable by any classical or quantum adversary. The market for post-quantum security is projected to exceed $9.5B by 2030.",
   },
   {
     icon: Zap,
@@ -57,7 +57,7 @@ const thesisPoints = [
 ];
 
 const milestones = [
-  { phase: "Phase 0", label: "Conceptual Framework", status: "current", description: "Developing the theoretical foundations of QWAI — the mathematical model of neural-quantum convergence." },
+  { phase: "Phase 0", label: "Conceptual Framework", status: "current", description: "Developing the theoretical foundations of QWAI: the mathematical model of neural-quantum convergence." },
   { phase: "Phase 1", label: "Research Publication", status: "upcoming", description: "Publishing peer-reviewed papers establishing the QWAI framework in top-tier physics and AI venues." },
   { phase: "Phase 2", label: "Prototype Development", status: "future", description: "Building the first hybrid quantum-classical prototype demonstrating the convergence point in a controlled environment." },
   { phase: "Phase 3", label: "Seed Round", status: "future", description: "Raising seed capital to assemble the core research team and acquire access to quantum hardware." },
@@ -116,7 +116,7 @@ export default function Investors() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            QWAI is in its earliest stage — the conceptual phase where the theoretical foundations are being laid. We are not raising capital yet. But we are building relationships with investors who understand that the most transformative opportunities are found before the crowd arrives.
+            QWAI is in its earliest stage, the conceptual phase where the theoretical foundations are being laid. We are not raising capital yet. But we are building relationships with investors who understand that the most transformative opportunities are found before the crowd arrives.
           </p>
           <div className="mt-8 p-4 rounded-xl border border-amber-500/30 bg-amber-500/5 text-amber-400 text-sm max-w-xl mx-auto">
             <strong>Important:</strong> QWAI is a conceptual framework in active development. This is not a solicitation for investment. No securities are being offered.

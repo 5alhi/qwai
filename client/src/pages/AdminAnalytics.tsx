@@ -120,7 +120,7 @@ export default function AdminAnalytics() {
               <StatCard icon={Eye} label="Total Page Views" value={summary?.totalViews?.toLocaleString() ?? 0} sub={`Last ${days} days`} color="#00d4ff" />
               <StatCard icon={Users} label="Unique Sessions" value={summary?.uniqueSessions?.toLocaleString() ?? 0} sub="Anonymous visitors" color="#ff00ff" />
               <StatCard icon={Mail} label="Newsletter Subscribers" value={subscribers?.length ?? 0} sub="Active subscribers" color="#10b981" />
-              <StatCard icon={FileText} label="Top Article Views" value={summary?.topArticles?.[0]?.count ?? 0} sub={summary?.topArticles?.[0]?.articleSlug ?? "—"} color="#f59e0b" />
+              <StatCard icon={FileText} label="Top Article Views" value={summary?.topArticles?.[0]?.count ?? 0} sub={summary?.topArticles?.[0]?.articleSlug ?? "-"} color="#f59e0b" />
             </div>
 
             {/* Daily Views Chart */}
@@ -144,7 +144,7 @@ export default function AdminAnalytics() {
                 </ResponsiveContainer>
               ) : (
                 <div className="flex items-center justify-center h-[220px] text-white/30 text-sm">
-                  No data yet — views will appear here once visitors arrive
+                  No data yet. Views will appear here once visitors arrive.
                 </div>
               )}
             </div>
@@ -299,7 +299,7 @@ export default function AdminAnalytics() {
                       {subscribers.map((sub) => (
                         <tr key={sub.id} className="border-b border-white/5 hover:bg-white/5">
                           <td className="py-2 px-3 text-white/80">{sub.email}</td>
-                          <td className="py-2 px-3 text-white/60">{sub.name ?? "—"}</td>
+                          <td className="py-2 px-3 text-white/60">{sub.name ?? "-"}</td>
                           <td className="py-2 px-3">
                             <span className="px-2 py-0.5 rounded-full text-xs bg-[#10b981]/20 text-[#10b981]">{sub.source}</span>
                           </td>
@@ -312,7 +312,7 @@ export default function AdminAnalytics() {
                   </table>
                 </div>
               ) : (
-                <p className="text-white/30 text-sm text-center py-8">No subscribers yet — the newsletter signup form will capture emails from visitors</p>
+                <p className="text-white/30 text-sm text-center py-8">No subscribers yet. The newsletter signup form will capture emails from visitors.</p>
               )}
             </div>
           </>

@@ -23,7 +23,7 @@ export default function Legal() {
                 Quantum Wave Artificial Intelligence (QWAI) and the domain qw.ai represent a <strong className="text-foreground">conceptual framework and theoretical thought experiment</strong> currently in early ideation stages. QWAI is not a commercially available product, service, platform, or technology. It has not been built, deployed, or validated as a working system.
               </p>
               <p className="mt-3">
-                All content on this website — including articles, philosophy pages, technical descriptions, and any other materials — is <strong className="text-foreground">speculative, theoretical, and intended solely for intellectual exploration and discussion</strong>. The ideas presented represent potential future directions for research and development, not current capabilities.
+                All content on this website, including articles, philosophy pages, technical descriptions, and any other materials, is <strong className="text-foreground">speculative, theoretical, and intended solely for intellectual exploration and discussion</strong>. The ideas presented represent potential future directions for research and development, not current capabilities.
               </p>
             </section>
 
@@ -89,7 +89,7 @@ export default function Legal() {
             <div className="mt-10 p-6 rounded-xl border border-destructive/30 bg-destructive/5">
               <h3 className="font-bold text-foreground mb-2">Summary</h3>
               <p className="text-sm">
-                QWAI is a <strong className="text-foreground">concept in early thinking stages</strong>. It is not a product. It is not an investment opportunity. It is not a guarantee of anything. It is an idea — a theoretical framework exploring what becomes possible when quantum physics and artificial intelligence converge. Engage with it as such.
+                QWAI is a <strong className="text-foreground">concept in early thinking stages</strong>. It is not a product. It is not an investment opportunity. It is not a guarantee of anything. It is an idea: a theoretical framework exploring what becomes possible when quantum physics and artificial intelligence converge. Engage with it as such.
               </p>
             </div>
           </div>

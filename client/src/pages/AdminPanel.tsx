@@ -38,7 +38,7 @@ export default function AdminPanel() {
     }
   }, [token, authCheck.data, navigate]);
 
-  // Articles list — passes token via headers (handled by trpc client)
+  // Articles list: passes token via headers (handled by trpc client)
   const articlesQuery = trpc.adminArticles.list.useQuery(undefined, {
     enabled: authCheck.data?.authenticated === true,
   });

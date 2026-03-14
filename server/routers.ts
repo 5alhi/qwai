@@ -26,7 +26,7 @@ const JWT_SECRET = new TextEncoder().encode(
 );
 const JWT_EXPIRY = "7d";
 
-// ─── Admin middleware — reads Bearer token from Authorization header ──────────
+// --- Admin middleware: reads Bearer token from Authorization header ---
 const adminProcedure = publicProcedure.use(async ({ ctx, next }) => {
   const authHeader = ctx.req.headers["authorization"] as string | undefined;
   const token = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
@@ -69,7 +69,7 @@ export const appRouter = router({
     }),
   }),
 
-  // ─── Admin auth — JWT-based, no cookies ─────────────────────────────────────
+  // --- Admin auth: JWT-based, no cookies ---
   admin: router({
     login: publicProcedure
       .input(z.object({ password: z.string() }))
