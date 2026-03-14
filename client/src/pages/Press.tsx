@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, Mail, FileText, Image, Package } from "lucide-react";
 import { usePageTracker } from "@/hooks/usePageTracker";
 
-const LOGO_ICON_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-icon_2bbe5a49.png";
-const LOGO_TRANSPARENT_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-transparent_4722dbc3.png";
-const LOGO_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_e9860a41.png";
+const LOGO_ICON_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-icon_cda1bf4c.png";
+const LOGO_TRANSPARENT_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-transparent_53f5473b.png";
+const LOGO_BANNER_PNG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_2e48705b.png";
 const LOGO_ICON_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-v4_01bf6b82.svg";
 const LOGO_TRANSPARENT_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-transparent_a1f9e017.svg";
 const LOGO_BANNER_SVG = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-banner_efe8705b.svg";
