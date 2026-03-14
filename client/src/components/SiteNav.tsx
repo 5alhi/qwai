@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
-const LOGO_MARK_URL = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-icon_cda1bf4c.png";
+const LOGO_MARK_URL = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-logo-icon_68377633.png";
 
 export default function SiteNav() {
   const [location] = useLocation();
@@ -45,7 +45,7 @@ export default function SiteNav() {
           <img
             src={LOGO_MARK_URL}
             alt="QWAI Logo"
-            className="w-9 h-9 rounded-lg object-contain"
+            className="w-9 h-9 object-contain"
           />
           <span className="text-xl font-bold text-foreground">qw.ai</span>
         </Link>
