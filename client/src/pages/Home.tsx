@@ -114,10 +114,13 @@ export default function Home() {
               ψ
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold leading-snug text-center flex flex-col items-center gap-1">
               <span className="glow-cyan text-accent">Quantum Wave</span>
-              <span className="text-muted-foreground/60 mx-3 font-light">.Collapse.</span>
-              <br />
+              <span className="font-light tracking-widest">
+                <span className="text-[#00ffff] drop-shadow-[0_0_8px_#00ffff]">.</span>
+                <span className="text-muted-foreground/70">Collapse</span>
+                <span className="text-[#00ffff] drop-shadow-[0_0_8px_#00ffff]">.</span>
+              </span>
               <span className="text-foreground">Artificial Intelligence</span>
             </h1>
 

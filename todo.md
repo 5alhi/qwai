@@ -107,3 +107,6 @@
 - [x] Email addresses in footer: info, press, careers, investors @qw.ai
 - [x] Add direct email link to Careers page (careers@qw.ai)
 - [x] Add direct email link to Investors page (investors@qw.ai)
+
+## Hero Tagline Layout
+- [x] Three-line hero tagline: Quantum Wave / .Collapse. / Artificial Intelligence, center-justified, smaller text, bright cyan dots
