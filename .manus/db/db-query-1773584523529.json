@@ -1,0 +1,40 @@
+{
+  "query": "SELECT slug, title, category FROM articles LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT slug, title, category FROM articles LIMIT 20;",
+  "rows": [
+    {
+      "slug": "the-way-of-qwai-part-1-quantum-green-paradox",
+      "title": "The Way of QWAI — Part 1: The Quantum Green Paradox",
+      "category": "QWAI Philosophy"
+    },
+    {
+      "slug": "the-way-of-qwai-part-2-quantum-sentinel",
+      "title": "The Way of QWAI — Part 2: The Quantum Sentinel",
+      "category": "QWAI Philosophy"
+    },
+    {
+      "slug": "quantum-computing-encryption-post-quantum-world",
+      "title": "Quantum Computing and the End of Classical Encryption",
+      "category": "Cryptography & Security"
+    },
+    {
+      "slug": "quantum-superposition-neural-networks-convergence",
+      "title": "Superposition and Neural Networks: Where Physics Meets Machine Learning",
+      "category": "Research & Theory"
+    },
+    {
+      "slug": "faster-processing-quantum-advantage",
+      "title": "Quantum Advantage: Why Quantum Computers Are Exponentially Faster",
+      "category": "Quantum Computing"
+    },
+    {
+      "slug": "anti-tampering-quantum-entanglement",
+      "title": "Anti-Tampering by Physics: How Quantum Entanglement Secures AI Models",
+      "category": "Cryptography & Security"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\ttitle\tcategory\nthe-way-of-qwai-part-1-quantum-green-paradox\tThe Way of QWAI — Part 1: The Quantum Green Paradox\tQWAI Philosophy\nthe-way-of-qwai-part-2-quantum-sentinel\tThe Way of QWAI — Part 2: The Quantum Sentinel\tQWAI Philosophy\nquantum-computing-encryption-post-quantum-world\tQuantum Computing and the End of Classical Encryption\tCryptography & Security\nquantum-superposition-neural-networks-convergence\tSuperposition and Neural Networks: Where Physics Meets Machine Learning\tResearch & Theory\nfaster-processing-quantum-advantage\tQuantum Advantage: Why Quantum Computers Are Exponentially Faster\tQuantum Computing\nanti-tampering-quantum-entanglement\tAnti-Tampering by Physics: How Quantum Entanglement Secures AI Models\tCryptography & Security\n",
+  "stderr": "",
+  "execution_time_ms": 1497
+}

@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, slug, title FROM articles;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT id, slug, title FROM articles;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "the-way-of-qwai-part-1-quantum-green-paradox",
+      "title": "The Way of QWAI — Part 1: The Quantum Green Paradox"
+    },
+    {
+      "id": "2",
+      "slug": "the-way-of-qwai-part-2-quantum-sentinel",
+      "title": "The Way of QWAI — Part 2: The Quantum Sentinel"
+    },
+    {
+      "id": "3",
+      "slug": "quantum-computing-encryption-post-quantum-world",
+      "title": "Quantum Computing and the End of Classical Encryption"
+    },
+    {
+      "id": "4",
+      "slug": "quantum-superposition-neural-networks-convergence",
+      "title": "Superposition and Neural Networks: Where Physics Meets Machine Learning"
+    },
+    {
+      "id": "5",
+      "slug": "faster-processing-quantum-advantage",
+      "title": "Quantum Advantage: Why Quantum Computers Are Exponentially Faster"
+    },
+    {
+      "id": "6",
+      "slug": "anti-tampering-quantum-entanglement",
+      "title": "Anti-Tampering by Physics: How Quantum Entanglement Secures AI Models"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\n1\tthe-way-of-qwai-part-1-quantum-green-paradox\tThe Way of QWAI — Part 1: The Quantum Green Paradox\n2\tthe-way-of-qwai-part-2-quantum-sentinel\tThe Way of QWAI — Part 2: The Quantum Sentinel\n3\tquantum-computing-encryption-post-quantum-world\tQuantum Computing and the End of Classical Encryption\n4\tquantum-superposition-neural-networks-convergence\tSuperposition and Neural Networks: Where Physics Meets Machine Learning\n5\tfaster-processing-quantum-advantage\tQuantum Advantage: Why Quantum Computers Are Exponentially Faster\n6\tanti-tampering-quantum-entanglement\tAnti-Tampering by Physics: How Quantum Entanglement Secures AI Models\n",
+  "stderr": "",
+  "execution_time_ms": 1566
+}

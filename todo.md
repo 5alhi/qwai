@@ -77,3 +77,11 @@
 ## Bug Fixes
 - [x] Fix React error #310 crash on article pages (useState hook moved before conditional returns)
 - [x] Remove all em-dashes from the entire codebase and replace with appropriate punctuation
+
+## Content Seeding
+- [x] Seed Article #3: The Way of the QWAI - The Classical Capex Cliff (with cover image)
+- [x] Generate QWAI Feasibility Matrix infographic for Article #3
+- [x] Generate shared cover image for Foundational Papers category
+- [x] Generate individual cover images for all 20 foundational papers
+- [x] Seed 20 foundational quantum computing papers as articles in the database
+- [x] Update Articles page to display Foundational Papers and The Way of the QWAI categories

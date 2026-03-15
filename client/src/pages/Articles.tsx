@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 
 const CATEGORIES = [
   "All",
+  "The Way of the QWAI",
+  "Foundational Papers",
   "QWAI Philosophy",
   "Quantum Computing",
   "Artificial Intelligence",
