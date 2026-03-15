@@ -15,6 +15,7 @@ import {
   StarOff,
   ExternalLink,
   TrendingUp,
+  Database,
 } from "lucide-react";
 
 export const ADMIN_TOKEN_KEY = "qwai_admin_token";
@@ -67,6 +68,14 @@ export default function AdminPanel() {
     onError: (err) => toast.error(err.message),
   });
 
+  const seedMutation = trpc.adminArticles.seedFoundationalContent.useMutation({
+    onSuccess: (data) => {
+      toast.success(`Seed complete: ${data.inserted} inserted, ${data.skipped} skipped`);
+      utils.adminArticles.list.invalidate();
+    },
+    onError: (err) => toast.error(`Seed failed: ${err.message}`),
+  });
+
   const toggleFeaturedMutation = trpc.adminArticles.update.useMutation({
     onSuccess: () => {
       toast.success("Article updated");
@@ -108,6 +117,17 @@ export default function AdminPanel() {
                 Analytics
               </Button>
             </Link>
+            <Button
+              variant="outline"
+              size="sm"
+              className="gap-2 border-[#00d4ff]/40 text-[#00d4ff] hover:bg-[#00d4ff]/10"
+              onClick={() => seedMutation.mutate()}
+              disabled={seedMutation.isPending}
+              title="Seed Article #3 and 20 Foundational Papers into the database (safe to run multiple times)"
+            >
+              <Database size={14} />
+              {seedMutation.isPending ? "Seeding..." : "Seed Articles"}
+            </Button>
             <a href="/" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="sm" className="gap-2 border-border">
                 <ExternalLink size={14} />

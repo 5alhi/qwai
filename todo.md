@@ -85,3 +85,7 @@
 - [x] Generate individual cover images for all 20 foundational papers
 - [x] Seed 20 foundational quantum computing papers as articles in the database
 - [x] Update Articles page to display Foundational Papers and The Way of the QWAI categories
+
+## Production Seed
+- [x] Add admin-triggered seedArticles tRPC procedure (safe to run multiple times)
+- [x] Add Seed Articles button in Admin panel

@@ -153,6 +153,13 @@ export const appRouter = router({
         return { success: true };
       }),
 
+    seedFoundationalContent: adminProcedure
+      .mutation(async () => {
+        const { seedFoundationalContent } = await import("./seedData");
+        const result = await seedFoundationalContent();
+        return result;
+      }),
+
     togglePublish: adminProcedure
       .input(z.object({ id: z.number(), published: z.boolean() }))
       .mutation(async ({ input }) => {
