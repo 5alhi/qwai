@@ -335,6 +335,16 @@ export default function Careers() {
         </div>
       </section>
 
+      {/* Direct contact */}
+      <section className="py-6 border-t border-border/30">
+        <div className="container text-center">
+          <p className="text-sm text-muted-foreground">
+            Prefer to reach out directly?{" "}
+            <a href="mailto:careers@qw.ai" className="text-accent hover:underline font-medium">careers@qw.ai</a>
+          </p>
+        </div>
+      </section>
+
       <SiteFooter />
     </div>
   );

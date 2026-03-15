@@ -104,7 +104,11 @@ export default function AdminPanel() {
       <header className="border-b border-border bg-card/50 backdrop-blur-md sticky top-0 z-50">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-3">
-            <span className="text-2xl font-bold glow-cyan text-accent">ψ</span>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v10-icon_267c3c42.png"
+              alt="QWAI Logo"
+              className="w-9 h-9 object-contain"
+            />
             <div>
               <span className="font-bold text-foreground">qw.ai</span>
               <span className="text-muted-foreground ml-2 text-sm">Admin Panel</span>

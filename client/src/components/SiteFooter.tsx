@@ -1,19 +1,24 @@
 import { Link } from "wouter";
 
+const LOGO_MARK_URL = "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/qwai-v10-icon_267c3c42.png";
+
 export default function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background/80 mt-auto">
       {/* Main footer links */}
       <div className="container py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl font-bold glow-cyan text-accent">ψ</span>
+              <img src={LOGO_MARK_URL} alt="QWAI Logo" className="w-8 h-8 object-contain" />
               <span className="text-lg font-bold text-foreground">qw.ai</span>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Quantum Wave Artificial Intelligence: exploring the convergence of quantum physics and machine learning.
+            <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+              Quantum Wave .Collapse. Artificial Intelligence
+            </p>
+            <p className="text-xs text-muted-foreground/60 leading-relaxed">
+              Exploring the convergence of quantum wave mechanics and artificial neural networks.
             </p>
           </div>
 
@@ -31,10 +36,39 @@ export default function SiteFooter() {
             </ul>
           </div>
 
+          {/* Contact */}
+          <div>
+            <h4 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">Contact</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="mailto:info@qw.ai" className="text-xs text-muted-foreground hover:text-accent transition-colors">info@qw.ai</a>
+              </li>
+              <li>
+                <a href="mailto:press@qw.ai" className="text-xs text-muted-foreground hover:text-accent transition-colors">press@qw.ai</a>
+              </li>
+              <li>
+                <a href="mailto:careers@qw.ai" className="text-xs text-muted-foreground hover:text-accent transition-colors">careers@qw.ai</a>
+              </li>
+              <li>
+                <a href="mailto:investors@qw.ai" className="text-xs text-muted-foreground hover:text-accent transition-colors">investors@qw.ai</a>
+              </li>
+            </ul>
+          </div>
+
           {/* Connect */}
           <div>
             <h4 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">Connect</h4>
             <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/112269466"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-muted-foreground hover:text-accent transition-colors"
+                >
+                  LinkedIn: QWAI Company
+                </a>
+              </li>
               <li>
                 <a
                   href="https://www.linkedin.com/in/samsalhi"

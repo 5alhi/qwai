@@ -116,6 +116,7 @@ export default function Home() {
 
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               <span className="glow-cyan text-accent">Quantum Wave</span>
+              <span className="text-muted-foreground/60 mx-3 font-light">.Collapse.</span>
               <br />
               <span className="text-foreground">Artificial Intelligence</span>
             </h1>

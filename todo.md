@@ -97,3 +97,13 @@
 - [x] Update Article #3 content with final LinkedIn-published version (The Physics of the P and L)
 - [x] Update LinkedIn URL to https://www.linkedin.com/pulse/classical-capex-cliff-samer-salhi-ik4nf
 - [x] Update seedData.ts to match final version
+
+## Tagline, Banner, Email & Admin Logo
+- [x] Update tagline to "Quantum Wave .Collapse. Artificial Intelligence" across site (hero, meta, OG tags, footer)
+- [x] Fix missing v10 logo in admin portal header (replaced psi symbol with v10 icon)
+- [x] Update JSON-LD sameAs to include LinkedIn company page
+- [x] Generate LinkedIn hero banner (1584x396) with v10 logo, tagline, qw.ai address
+- [x] Upload LinkedIn banner to CDN
+- [x] Email addresses in footer: info, press, careers, investors @qw.ai
+- [x] Add direct email link to Careers page (careers@qw.ai)
+- [x] Add direct email link to Investors page (investors@qw.ai)
