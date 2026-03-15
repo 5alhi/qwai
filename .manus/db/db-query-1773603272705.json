@@ -1,0 +1,14 @@
+{
+  "query": "SELECT id, CHAR_LENGTH(content) as len FROM articles WHERE slug LIKE '%classical-capex%' OR title LIKE '%Classical Capex%' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT id, CHAR_LENGTH(content) as len FROM articles WHERE slug LIKE '%classical-capex%' OR title LIKE '%Classical Capex%' LIMIT 1;",
+  "rows": [
+    {
+      "id": "60001",
+      "len": "4333"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tlen\n60001\t4333\n",
+  "stderr": "",
+  "execution_time_ms": 1515
+}

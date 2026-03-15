@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, slug, LOCATE('table', content) as has_table, CHAR_LENGTH(content) as content_len FROM articles WHERE slug = 'the-way-of-qwai-part-3-the-classical-capex-cliff';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT id, slug, LOCATE('table', content) as has_table, CHAR_LENGTH(content) as content_len FROM articles WHERE slug = 'the-way-of-qwai-part-3-the-classical-capex-cliff';",
+  "rows": [
+    {
+      "id": "60001",
+      "slug": "the-way-of-qwai-part-3-the-classical-capex-cliff",
+      "has_table": "2859",
+      "content_len": "5724"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\thas_table\tcontent_len\n60001\tthe-way-of-qwai-part-3-the-classical-capex-cliff\t2859\t5724\n",
+  "stderr": "",
+  "execution_time_ms": 1535
+}

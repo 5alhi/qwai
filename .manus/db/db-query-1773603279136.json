@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, slug, LOCATE('table', content) as table_pos, LOCATE('Feasibility', content) as matrix_pos FROM articles WHERE slug LIKE '%classical-capex%' OR title LIKE '%Classical Capex%' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT id, slug, LOCATE('table', content) as table_pos, LOCATE('Feasibility', content) as matrix_pos FROM articles WHERE slug LIKE '%classical-capex%' OR title LIKE '%Classical Capex%' LIMIT 1;",
+  "rows": [
+    {
+      "id": "60001",
+      "slug": "the-way-of-qwai-part-3-the-classical-capex-cliff",
+      "table_pos": "2859",
+      "matrix_pos": "60"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttable_pos\tmatrix_pos\n60001\tthe-way-of-qwai-part-3-the-classical-capex-cliff\t2859\t60\n",
+  "stderr": "",
+  "execution_time_ms": 1567
+}

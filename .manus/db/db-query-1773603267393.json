@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, slug, SUBSTRING(content, 1, 500) as content_preview FROM articles WHERE slug LIKE '%classical-capex%' OR title LIKE '%Classical Capex%' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT id, slug, SUBSTRING(content, 1, 500) as content_preview FROM articles WHERE slug LIKE '%classical-capex%' OR title LIKE '%Classical Capex%' LIMIT 1;",
+  "rows": [
+    {
+      "id": "60001",
+      "slug": "the-way-of-qwai-part-3-the-classical-capex-cliff",
+      "content_preview": "<h2>The Classical Capex Cliff</h2>"
+    }
+  ],
+  "messages": [
+    "<p>To understand QWAI's feasibility, one must first look at the current alternative.</p>",
+    "<h3>The GPU Tax</h3>",
+    "<p>Training a trillion-parameter LLM in 2026 can cost between $5 million and $10 million in cluster rentals alone.</p>",
+    "<h3>The Power Bill</h3>",
+    "<p>High-end GPU clusters (like NVIDIA's H200) consume massive energy, with operational costs increasingly dominated by the cooling infrastructure required to dissipate kilowatts of heat.</p>",
+    "<h3>The Stagnation"
+  ],
+  "stdout": "id\tslug\tcontent_preview\n60001\tthe-way-of-qwai-part-3-the-classical-capex-cliff\t<h2>The Classical Capex Cliff</h2>\n<p>To understand QWAI's feasibility, one must first look at the current alternative.</p>\n\n<h3>The GPU Tax</h3>\n<p>Training a trillion-parameter LLM in 2026 can cost between $5 million and $10 million in cluster rentals alone.</p>\n\n<h3>The Power Bill</h3>\n<p>High-end GPU clusters (like NVIDIA's H200) consume massive energy, with operational costs increasingly dominated by the cooling infrastructure required to dissipate kilowatts of heat.</p>\n\n<h3>The Stagnation\n",
+  "stderr": "",
+  "execution_time_ms": 1584
+}

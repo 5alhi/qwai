@@ -136,15 +136,35 @@ const ARTICLE_3 = {
 <p><strong>Accuracy Gains:</strong> Early research into quantum-enhanced LLMs shows up to a 3.14% improvement in accuracy over classical baselines of comparable size.</p>
 
 <h2>The QWAI Feasibility Matrix</h2>
-<table>
+<table style="width:100%;border-collapse:collapse;margin:1.5rem 0;">
   <thead>
-    <tr><th>Metric</th><th>Classical LLM (2026)</th><th>QWAI Concept (Theoretical)</th></tr>
+    <tr>
+      <th style="background:rgba(0,212,255,0.12);color:#00d4ff;padding:12px 16px;text-align:left;border-bottom:2px solid rgba(0,212,255,0.3);">Metric</th>
+      <th style="background:rgba(0,212,255,0.12);color:#00d4ff;padding:12px 16px;text-align:left;border-bottom:2px solid rgba(0,212,255,0.3);">Classical LLM (2026)</th>
+      <th style="background:rgba(0,212,255,0.12);color:#00d4ff;padding:12px 16px;text-align:left;border-bottom:2px solid rgba(0,212,255,0.3);">QWAI Concept (Theoretical)</th>
+    </tr>
   </thead>
   <tbody>
-    <tr><td>Scaling Law</td><td>Linear (More GPUs = More Power)</td><td>Exponential (More Qubits = More Density)</td></tr>
-    <tr><td>Energy Profile</td><td>Gigawatt-scale farm cooling</td><td>Megawatt-scale cryogenic core</td></tr>
-    <tr><td>Data Integrity</td><td>Vulnerable to Model Poisoning</td><td>Physically Tamper-Proof via Fidelity</td></tr>
-    <tr><td>Cost Barrier</td><td>OpEx-heavy (Energy and Rental)</td><td>CapEx-heavy (Hardware development)</td></tr>
+    <tr>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);"><strong>Scaling Law</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);">Linear (More GPUs = More Power)</td>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);"><strong>Exponential</strong> (More Qubits = More Density)</td>
+    </tr>
+    <tr style="background:rgba(255,255,255,0.02);">
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);"><strong>Energy Profile</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);">Gigawatt-scale farm cooling</td>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);"><strong>Megawatt-scale</strong> cryogenic core</td>
+    </tr>
+    <tr>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);"><strong>Data Integrity</strong></td>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);">Vulnerable to Model Poisoning</td>
+      <td style="padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.08);"><strong>Physically Tamper-Proof</strong> via Fidelity</td>
+    </tr>
+    <tr style="background:rgba(255,255,255,0.02);">
+      <td style="padding:12px 16px;"><strong>Cost Barrier</strong></td>
+      <td style="padding:12px 16px;">OpEx-heavy (Energy and Rental)</td>
+      <td style="padding:12px 16px;"><strong>CapEx-heavy</strong> (Hardware development)</td>
+    </tr>
   </tbody>
 </table>
 

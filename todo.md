@@ -89,3 +89,6 @@
 ## Production Seed
 - [x] Add admin-triggered seedArticles tRPC procedure (safe to run multiple times)
 - [x] Add Seed Articles button in Admin panel
+
+## Article #3 Table Fix
+- [x] Replace feasibility matrix table in Article #3 with clean version from user's HTML paste (styled with cyan headers, bold QWAI values, alternating rows)
