@@ -92,3 +92,8 @@
 
 ## Article #3 Table Fix
 - [x] Replace feasibility matrix table in Article #3 with clean version from user's HTML paste (styled with cyan headers, bold QWAI values, alternating rows)
+
+## Article #3 LinkedIn Update
+- [x] Update Article #3 content with final LinkedIn-published version (The Physics of the P and L)
+- [x] Update LinkedIn URL to https://www.linkedin.com/pulse/classical-capex-cliff-samer-salhi-ik4nf
+- [x] Update seedData.ts to match final version
