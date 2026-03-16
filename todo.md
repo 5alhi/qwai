@@ -110,3 +110,8 @@
 
 ## Hero Tagline Layout
 - [x] Three-line hero tagline: Quantum Wave / .Collapse. / Artificial Intelligence, center-justified, smaller text, bright cyan dots
+
+## Article Category & Featured Fixes
+- [x] Update articles 1 and 2 category to "The Way of the QWAI" and mark all 3 LinkedIn articles as Featured
+- [x] Update hero tagline: Quantum Wave + Artificial Intelligence bigger, .Collapse. smaller/overlapping with slide-in entrance animation
+- [x] Make psi logo semi-transparent (opacity 0.35, screen blend mode) so background shows through

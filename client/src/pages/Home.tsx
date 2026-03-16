@@ -109,20 +109,42 @@ export default function Home() {
               Conceptual Framework · Early Ideation Stage
             </div>
 
-            {/* Psi symbol */}
-            <div className="text-8xl md:text-9xl font-bold glow-cyan text-accent wave-animate select-none">
+            {/* Psi symbol - semi-transparent so background shows through */}
+            <div
+              className="text-8xl md:text-9xl font-bold glow-cyan text-accent wave-animate select-none"
+              style={{ opacity: 0.35, mixBlendMode: "screen" }}
+            >
               ψ
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold leading-snug text-center flex flex-col items-center gap-1">
-              <span className="glow-cyan text-accent">Quantum Wave</span>
-              <span className="font-light tracking-widest">
-                <span className="text-[#00ffff] drop-shadow-[0_0_8px_#00ffff]">.</span>
-                <span className="text-muted-foreground/70">Collapse</span>
-                <span className="text-[#00ffff] drop-shadow-[0_0_8px_#00ffff]">.</span>
+            {/* Stacked tagline with overlap */}
+            <div className="relative flex flex-col items-center text-center select-none" style={{ lineHeight: 1 }}>
+              {/* Quantum Wave - large */}
+              <span
+                className="glow-cyan text-accent font-bold hero-line-1"
+                style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", letterSpacing: "-0.01em", zIndex: 2, position: "relative" }}
+              >
+                Quantum Wave
               </span>
-              <span className="text-foreground">Artificial Intelligence</span>
-            </h1>
+
+              {/* .Collapse. - smaller, overlapping both lines */}
+              <span
+                className="font-light tracking-[0.25em] hero-line-2"
+                style={{ fontSize: "clamp(1rem, 2.5vw, 1.6rem)", marginTop: "-0.3em", marginBottom: "-0.3em", zIndex: 3, position: "relative" }}
+              >
+                <span className="text-[#00ffff] drop-shadow-[0_0_10px_#00ffff] animate-pulse">&bull;</span>
+                <span className="text-muted-foreground/60 mx-1">Collapse</span>
+                <span className="text-[#00ffff] drop-shadow-[0_0_10px_#00ffff] animate-pulse">&bull;</span>
+              </span>
+
+              {/* Artificial Intelligence - large */}
+              <span
+                className="text-foreground font-bold hero-line-3"
+                style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", letterSpacing: "-0.01em", zIndex: 2, position: "relative" }}
+              >
+                Artificial Intelligence
+              </span>
+            </div>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               A theoretical framework exploring the convergence of quantum wave mechanics and artificial neural networks, where both systems reach their limits and something new emerges.

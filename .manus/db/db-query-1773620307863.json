@@ -1,0 +1,199 @@
+{
+  "query": "SELECT id, title, category, featured, linkedinUrl FROM articles ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4BdfshR5KGD9QxB.4c622a7fca0a --database AZgbj2ZwAKxooAM5AQuEWd --execute SELECT id, title, category, featured, linkedinUrl FROM articles ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "The Way of QWAI — Part 1: The Quantum Green Paradox",
+      "category": "QWAI Philosophy",
+      "featured": "1",
+      "linkedinUrl": "https://www.linkedin.com/posts/samsalhi_wave-quantum-superposition-ugcPost-7437201471357480961-xT3H"
+    },
+    {
+      "id": "2",
+      "title": "The Way of QWAI — Part 2: The Quantum Sentinel",
+      "category": "QWAI Philosophy",
+      "featured": "1",
+      "linkedinUrl": "https://www.linkedin.com/posts/samsalhi_speedbump-agi-decryption-ugcPost-7437627555215470594-fBxQ"
+    },
+    {
+      "id": "3",
+      "title": "Quantum Computing and the End of Classical Encryption",
+      "category": "Cryptography & Security",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "4",
+      "title": "Superposition and Neural Networks: Where Physics Meets Machine Learning",
+      "category": "Research & Theory",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "5",
+      "title": "Quantum Advantage: Why Quantum Computers Are Exponentially Faster",
+      "category": "Quantum Computing",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "6",
+      "title": "Anti-Tampering by Physics: How Quantum Entanglement Secures AI Models",
+      "category": "Cryptography & Security",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60001",
+      "title": "The Way of the QWAI, Part 3: The Physics of the P and L",
+      "category": "The Way of the QWAI",
+      "featured": "0",
+      "linkedinUrl": "https://www.linkedin.com/pulse/classical-capex-cliff-samer-salhi-ik4nf"
+    },
+    {
+      "id": "60002",
+      "title": "Foundational Paper: Superposition and Entanglement",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60003",
+      "title": "Foundational Paper: Shor's Algorithm",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60004",
+      "title": "Foundational Paper: Bell's Theorem",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60005",
+      "title": "Foundational Paper: Grover's Algorithm",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60006",
+      "title": "Foundational Paper: Quantum Fourier Transform (QFT)",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60007",
+      "title": "Foundational Paper: Variational Quantum Eigensolver (VQE)",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60008",
+      "title": "Foundational Paper: Quantum Phase Estimation (QPE)",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60009",
+      "title": "Foundational Paper: HHL Algorithm",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60010",
+      "title": "Foundational Paper: QAOA (Quantum Approximate Optimization Algorithm)",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60011",
+      "title": "Foundational Paper: Quantum Error Correction and the Threshold Theorem",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60012",
+      "title": "Foundational Paper: Deutsch-Jozsa Algorithm",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60013",
+      "title": "Foundational Paper: Simon's Algorithm",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60014",
+      "title": "Foundational Paper: Bernstein-Vazirani Algorithm",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60015",
+      "title": "Foundational Paper: Quantum Teleportation",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60016",
+      "title": "Foundational Paper: Quantum Simulation (Lloyd's)",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60017",
+      "title": "Foundational Paper: Surface Code (Quantum Error Correction)",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60018",
+      "title": "Foundational Paper: Quantum Walks",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60019",
+      "title": "Foundational Paper: BQP Complexity Class",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60020",
+      "title": "Foundational Paper: Amplitude Amplification",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    },
+    {
+      "id": "60021",
+      "title": "Foundational Paper: Quantum Volume",
+      "category": "Foundational Papers",
+      "featured": "0",
+      "linkedinUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tcategory\tfeatured\tlinkedinUrl\n1\tThe Way of QWAI — Part 1: The Quantum Green Paradox\tQWAI Philosophy\t1\thttps://www.linkedin.com/posts/samsalhi_wave-quantum-superposition-ugcPost-7437201471357480961-xT3H\n2\tThe Way of QWAI — Part 2: The Quantum Sentinel\tQWAI Philosophy\t1\thttps://www.linkedin.com/posts/samsalhi_speedbump-agi-decryption-ugcPost-7437627555215470594-fBxQ\n3\tQuantum Computing and the End of Classical Encryption\tCryptography & Security\t0\tNULL\n4\tSuperposition and Neural Networks: Where Physics Meets Machine Learning\tResearch & Theory\t0\tNULL\n5\tQuantum Advantage: Why Quantum Computers Are Exponentially Faster\tQuantum Computing\t0\tNULL\n6\tAnti-Tampering by Physics: How Quantum Entanglement Secures AI Models\tCryptography & Security\t0\tNULL\n60001\tThe Way of the QWAI, Part 3: The Physics of the P and L\tThe Way of the QWAI\t0\thttps://www.linkedin.com/pulse/classical-capex-cliff-samer-salhi-ik4nf\n60002\tFoundational Paper: Superposition and Entanglement\tFoundational Papers\t0\tNULL\n60003\tFoundational Paper: Shor's Algorithm\tFoundational Papers\t0\tNULL\n60004\tFoundational Paper: Bell's Theorem\tFoundational Papers\t0\tNULL\n60005\tFoundational Paper: Grover's Algorithm\tFoundational Papers\t0\tNULL\n60006\tFoundational Paper: Quantum Fourier Transform (QFT)\tFoundational Papers\t0\tNULL\n60007\tFoundational Paper: Variational Quantum Eigensolver (VQE)\tFoundational Papers\t0\tNULL\n60008\tFoundational Paper: Quantum Phase Estimation (QPE)\tFoundational Papers\t0\tNULL\n60009\tFoundational Paper: HHL Algorithm\tFoundational Papers\t0\tNULL\n60010\tFoundational Paper: QAOA (Quantum Approximate Optimization Algorithm)\tFoundational Papers\t0\tNULL\n60011\tFoundational Paper: Quantum Error Correction and the Threshold Theorem\tFoundational Papers\t0\tNULL\n60012\tFoundational Paper: Deutsch-Jozsa Algorithm\tFoundational Papers\t0\tNULL\n60013\tFoundational Paper: Simon's Algorithm\tFoundational Papers\t0\tNULL\n60014\tFoundational Paper: Bernstein-Vazirani Algorithm\tFoundational Papers\t0\tNULL\n60015\tFoundational Paper: Quantum Teleportation\tFoundational Papers\t0\tNULL\n60016\tFoundational Paper: Quantum Simulation (Lloyd's)\tFoundational Papers\t0\tNULL\n60017\tFoundational Paper: Surface Code (Quantum Error Correction)\tFoundational Papers\t0\tNULL\n60018\tFoundational Paper: Quantum Walks\tFoundational Papers\t0\tNULL\n60019\tFoundational Paper: BQP Complexity Class\tFoundational Papers\t0\tNULL\n60020\tFoundational Paper: Amplitude Amplification\tFoundational Papers\t0\tNULL\n60021\tFoundational Paper: Quantum Volume\tFoundational Papers\t0\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1643
+}
