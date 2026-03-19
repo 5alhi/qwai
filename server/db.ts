@@ -1,4 +1,4 @@
-import { and, count, desc, eq, gt, gte, sql } from "drizzle-orm";
+import { and, count, desc, eq, gt, gte, sql, isNotNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   adminSessions,
@@ -7,9 +7,11 @@ import {
   InsertNewsletterSubscriber,
   InsertPageView,
   InsertUser,
+  InsertVisitorEvent,
   newsletterSubscribers,
   pageViews,
   users,
+  visitorEvents,
 } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
@@ -129,11 +131,36 @@ export async function deleteAdminSession(token: string) {
 
 export async function trackPageView(data: InsertPageView) {
   const db = await getDb();
-  if (!db) return;
+  if (!db) return null;
   try {
-    await db.insert(pageViews).values(data);
+    const result = await db.insert(pageViews).values(data);
+    // Return the inserted ID so client can reference it for event tracking
+    return (result as unknown as { insertId: number }).insertId ?? null;
   } catch (e) {
     console.warn("[Analytics] Failed to track page view:", e);
+    return null;
+  }
+}
+
+export async function updatePageViewEngagement(id: number, scrollDepth: number, timeOnPage: number) {
+  const db = await getDb();
+  if (!db) return;
+  try {
+    await db.update(pageViews)
+      .set({ scrollDepth, timeOnPage })
+      .where(eq(pageViews.id, id));
+  } catch (e) {
+    console.warn("[Analytics] Failed to update engagement:", e);
+  }
+}
+
+export async function trackVisitorEvent(data: InsertVisitorEvent) {
+  const db = await getDb();
+  if (!db) return;
+  try {
+    await db.insert(visitorEvents).values(data);
+  } catch (e) {
+    console.warn("[Analytics] Failed to track visitor event:", e);
   }
 }
 
@@ -152,6 +179,11 @@ export async function getAnalyticsSummary(days = 30) {
     .from(pageViews)
     .where(gte(pageViews.createdAt, since));
 
+  const [newVisitors] = await db
+    .select({ count: count() })
+    .from(pageViews)
+    .where(and(gte(pageViews.createdAt, since), eq(pageViews.isNewVisitor, true)));
+
   const topPages = await db
     .select({ path: pageViews.path, count: count() })
     .from(pageViews)
@@ -161,10 +193,10 @@ export async function getAnalyticsSummary(days = 30) {
     .limit(10);
 
   const topReferrers = await db
-    .select({ referrer: pageViews.referrer, count: count() })
+    .select({ referrer: pageViews.referrerDomain, count: count() })
     .from(pageViews)
-    .where(and(gte(pageViews.createdAt, since), sql`${pageViews.referrer} IS NOT NULL AND ${pageViews.referrer} != ''`))
-    .groupBy(pageViews.referrer)
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.referrerDomain), sql`${pageViews.referrerDomain} != ''`))
+    .groupBy(pageViews.referrerDomain)
     .orderBy(desc(count()))
     .limit(10);
 
@@ -175,19 +207,68 @@ export async function getAnalyticsSummary(days = 30) {
     .groupBy(pageViews.device)
     .orderBy(desc(count()));
 
+  const browserBreakdown = await db
+    .select({ browser: pageViews.browser, count: count() })
+    .from(pageViews)
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.browser)))
+    .groupBy(pageViews.browser)
+    .orderBy(desc(count()))
+    .limit(10);
+
+  const osBreakdown = await db
+    .select({ os: pageViews.os, count: count() })
+    .from(pageViews)
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.os)))
+    .groupBy(pageViews.os)
+    .orderBy(desc(count()))
+    .limit(10);
+
+  const countryBreakdown = await db
+    .select({ country: pageViews.country, countryCode: pageViews.countryCode, count: count() })
+    .from(pageViews)
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.country)))
+    .groupBy(pageViews.country, pageViews.countryCode)
+    .orderBy(desc(count()))
+    .limit(20);
+
+  const cityBreakdown = await db
+    .select({ city: pageViews.city, country: pageViews.country, lat: pageViews.latitude, lng: pageViews.longitude, count: count() })
+    .from(pageViews)
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.city)))
+    .groupBy(pageViews.city, pageViews.country, pageViews.latitude, pageViews.longitude)
+    .orderBy(desc(count()))
+    .limit(50);
+
+  const utmSources = await db
+    .select({ source: pageViews.utmSource, medium: pageViews.utmMedium, campaign: pageViews.utmCampaign, count: count() })
+    .from(pageViews)
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.utmSource)))
+    .groupBy(pageViews.utmSource, pageViews.utmMedium, pageViews.utmCampaign)
+    .orderBy(desc(count()))
+    .limit(20);
+
   const topArticles = await db
     .select({ articleSlug: pageViews.articleSlug, count: count() })
     .from(pageViews)
-    .where(and(gte(pageViews.createdAt, since), sql`${pageViews.articleSlug} IS NOT NULL`))
+    .where(and(gte(pageViews.createdAt, since), isNotNull(pageViews.articleSlug)))
     .groupBy(pageViews.articleSlug)
     .orderBy(desc(count()))
     .limit(10);
 
-  // Daily views for the last 30 days
+  const avgEngagement = await db
+    .select({
+      avgScroll: sql<number>`AVG(${pageViews.scrollDepth})`,
+      avgTime: sql<number>`AVG(${pageViews.timeOnPage})`,
+      avgLoad: sql<number>`AVG(${pageViews.pageLoadTime})`,
+    })
+    .from(pageViews)
+    .where(gte(pageViews.createdAt, since));
+
   const dailyViews = await db
     .select({
       date: sql<string>`DATE(${pageViews.createdAt})`,
       count: count(),
+      sessions: sql<number>`COUNT(DISTINCT ${pageViews.sessionId})`,
     })
     .from(pageViews)
     .where(gte(pageViews.createdAt, since))
@@ -197,12 +278,83 @@ export async function getAnalyticsSummary(days = 30) {
   return {
     totalViews: totalViews?.count ?? 0,
     uniqueSessions: Number(uniqueSessions?.count ?? 0),
+    newVisitors: newVisitors?.count ?? 0,
     topPages,
     topReferrers,
     deviceBreakdown,
+    browserBreakdown,
+    osBreakdown,
+    countryBreakdown,
+    cityBreakdown,
+    utmSources,
     topArticles,
+    avgEngagement: avgEngagement[0] ?? { avgScroll: 0, avgTime: 0, avgLoad: 0 },
     dailyViews,
   };
+}
+
+export async function getRecentHits(limit = 100, offset = 0, search?: string) {
+  const db = await getDb();
+  if (!db) return { hits: [], total: 0 };
+  
+  const whereClause = search
+    ? sql`(${pageViews.path} LIKE ${`%${search}%`} OR ${pageViews.ip} LIKE ${`%${search}%`} OR ${pageViews.city} LIKE ${`%${search}%`} OR ${pageViews.country} LIKE ${`%${search}%`} OR ${pageViews.referrer} LIKE ${`%${search}%`})`
+    : undefined;
+
+  const hits = await db
+    .select()
+    .from(pageViews)
+    .where(whereClause)
+    .orderBy(desc(pageViews.createdAt))
+    .limit(limit)
+    .offset(offset);
+
+  const [totalResult] = await db
+    .select({ count: count() })
+    .from(pageViews)
+    .where(whereClause);
+
+  return { hits, total: totalResult?.count ?? 0 };
+}
+
+export async function getPageViewById(id: number) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.select().from(pageViews).where(eq(pageViews.id, id)).limit(1);
+  return result[0] ?? null;
+}
+
+export async function getEventsByPageViewId(pageViewId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(visitorEvents)
+    .where(eq(visitorEvents.pageViewId, pageViewId))
+    .orderBy(visitorEvents.createdAt);
+}
+
+export async function getSessionTimeline(sessionId: string) {
+  const db = await getDb();
+  if (!db) return { pageViews: [], events: [] };
+  
+  const pvs = await db.select().from(pageViews)
+    .where(eq(pageViews.sessionId, sessionId))
+    .orderBy(pageViews.createdAt);
+  
+  const evts = await db.select().from(visitorEvents)
+    .where(eq(visitorEvents.sessionId, sessionId))
+    .orderBy(visitorEvents.createdAt);
+
+  return { pageViews: pvs, events: evts };
+}
+
+export async function getRealTimeHits(minutes = 60) {
+  const db = await getDb();
+  if (!db) return [];
+  const since = new Date(Date.now() - minutes * 60 * 1000);
+  return db.select().from(pageViews)
+    .where(gte(pageViews.createdAt, since))
+    .orderBy(desc(pageViews.createdAt))
+    .limit(200);
 }
 
 // ─── Newsletter helpers ───────────────────────────────────────────────────────

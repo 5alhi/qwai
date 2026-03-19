@@ -62,22 +62,87 @@ export const adminSessions = mysqlTable("admin_sessions", {
 export type AdminSession = typeof adminSessions.$inferSelect;
 
 /**
- * Page views: anonymous visitor tracking for analytics
+ * Page views: comprehensive visitor tracking for analytics
+ * Captures every available signal from each hit.
  */
 export const pageViews = mysqlTable("page_views", {
   id: int("id").autoincrement().primaryKey(),
+
+  // Navigation
   path: varchar("path", { length: 512 }).notNull(),
   referrer: varchar("referrer", { length: 1024 }),
-  userAgent: text("userAgent"),
-  country: varchar("country", { length: 128 }),
-  device: mysqlEnum("device", ["desktop", "mobile", "tablet"]).default("desktop"),
-  sessionId: varchar("sessionId", { length: 128 }),
+  referrerDomain: varchar("referrerDomain", { length: 256 }),
   articleSlug: varchar("articleSlug", { length: 256 }),
+
+  // UTM / campaign tracking
+  utmSource: varchar("utmSource", { length: 256 }),
+  utmMedium: varchar("utmMedium", { length: 256 }),
+  utmCampaign: varchar("utmCampaign", { length: 256 }),
+  utmContent: varchar("utmContent", { length: 256 }),
+  utmTerm: varchar("utmTerm", { length: 256 }),
+
+  // Session
+  sessionId: varchar("sessionId", { length: 128 }),
+  isNewVisitor: boolean("isNewVisitor").default(true),
+
+  // Device & browser
+  userAgent: text("userAgent"),
+  device: mysqlEnum("device", ["desktop", "mobile", "tablet"]).default("desktop"),
+  browser: varchar("browser", { length: 128 }),
+  browserVersion: varchar("browserVersion", { length: 64 }),
+  os: varchar("os", { length: 128 }),
+  osVersion: varchar("osVersion", { length: 64 }),
+  screenWidth: int("screenWidth"),
+  screenHeight: int("screenHeight"),
+  viewportWidth: int("viewportWidth"),
+  viewportHeight: int("viewportHeight"),
+  colorDepth: int("colorDepth"),
+  language: varchar("language", { length: 32 }),
+  connectionType: varchar("connectionType", { length: 64 }),
+
+  // Geo (resolved server-side from IP)
+  ip: varchar("ip", { length: 64 }),
+  country: varchar("country", { length: 128 }),
+  countryCode: varchar("countryCode", { length: 8 }),
+  region: varchar("region", { length: 128 }),
+  city: varchar("city", { length: 128 }),
+  latitude: varchar("latitude", { length: 32 }),
+  longitude: varchar("longitude", { length: 32 }),
+  timezone: varchar("timezone", { length: 64 }),
+  isp: varchar("isp", { length: 256 }),
+
+  // Engagement (updated via separate event)
+  scrollDepth: int("scrollDepth").default(0),   // max % scrolled
+  timeOnPage: int("timeOnPage").default(0),      // seconds
+  pageLoadTime: int("pageLoadTime"),             // ms
+
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
 export type PageView = typeof pageViews.$inferSelect;
 export type InsertPageView = typeof pageViews.$inferInsert;
+
+/**
+ * Visitor events: individual interactions within a page view
+ * (clicks, scroll milestones, form interactions, etc.)
+ */
+export const visitorEvents = mysqlTable("visitor_events", {
+  id: int("id").autoincrement().primaryKey(),
+  pageViewId: int("pageViewId"),   // FK to page_views.id
+  sessionId: varchar("sessionId", { length: 128 }),
+  eventType: varchar("eventType", { length: 64 }).notNull(), // click | scroll | exit | focus | copy
+  eventTarget: varchar("eventTarget", { length: 512 }),      // CSS selector or element tag
+  eventText: varchar("eventText", { length: 512 }),          // visible text of clicked element
+  eventHref: varchar("eventHref", { length: 1024 }),         // href if it's a link
+  positionX: int("positionX"),
+  positionY: int("positionY"),
+  scrollPercent: int("scrollPercent"),
+  metadata: text("metadata"),                                // JSON blob for extra data
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type VisitorEvent = typeof visitorEvents.$inferSelect;
+export type InsertVisitorEvent = typeof visitorEvents.$inferInsert;
 
 /**
  * Newsletter subscribers: email capture for updates

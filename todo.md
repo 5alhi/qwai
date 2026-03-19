@@ -115,3 +115,14 @@
 - [x] Update articles 1 and 2 category to "The Way of the QWAI" and mark all 3 LinkedIn articles as Featured
 - [x] Update hero tagline: Quantum Wave + Artificial Intelligence bigger, .Collapse. smaller/overlapping with slide-in entrance animation
 - [x] Make psi logo semi-transparent (opacity 0.35, screen blend mode) so background shows through
+
+## Deep Analytics System
+- [x] Audit existing analytics setup
+- [x] Create analytics DB schema (38-col page_views + visitor_events tables)
+- [x] Server-side collection endpoint: IP, user agent, referrer, geolocation (ip-api.com), headers
+- [x] Client-side tracker: page views, clicks, scroll depth, session, UTM params, device/screen info
+- [x] Analytics admin dashboard with per-hit drill-down (7 tabs: Overview, Geo, Tech, Traffic, Hits, Realtime, Subscribers)
+- [x] Session timeline view (all events in a single visit)
+- [x] Geo map and top referrers panels
+- [x] Real-time feed (auto-refreshes every 30s)
+- [x] 23 unit tests passing (parseUserAgent, extractReferrerDomain, extractIp, analytics.track)
