@@ -126,3 +126,8 @@
 - [x] Geo map and top referrers panels
 - [x] Real-time feed (auto-refreshes every 30s)
 - [x] 23 unit tests passing (parseUserAgent, extractReferrerDomain, extractIp, analytics.track)
+
+## Stanford Optical Cavity Article
+- [x] Generate cover image for Stanford optical cavity / light-based qubit article
+- [x] Add article to seedData.ts (featured, The Way of the QWAI category, Stanford/Nature sources, published 2026-03-27)
+- [ ] Push to GitHub and save checkpoint
