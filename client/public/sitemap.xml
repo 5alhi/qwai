@@ -1,64 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Core pages -->
   <url>
     <loc>https://qw.ai/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2026-03-27</lastmod>
   </url>
 
   <url>
     <loc>https://qw.ai/philosophy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <lastmod>2026-03-15</lastmod>
   </url>
 
   <url>
     <loc>https://qw.ai/articles</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://qw.ai/articles/the-way-of-qwai-part-1-quantum-green-paradox</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://qw.ai/articles/the-way-of-qwai-part-2-quantum-sentinel</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://qw.ai/articles/quantum-computing-encryption-post-quantum-world</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://qw.ai/articles/quantum-superposition-neural-networks-convergence</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://qw.ai/articles/faster-processing-quantum-advantage</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://qw.ai/articles/anti-tampering-quantum-entanglement</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-03-27</lastmod>
   </url>
 
   <url>
     <loc>https://qw.ai/legal</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <!-- The Way of the QWAI series -->
+  <url>
+    <loc>https://qw.ai/articles/the-way-of-qwai-part-1-quantum-green-paradox</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/the-way-of-qwai-part-2-quantum-sentinel</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/classical-capex-cliff-quantum-economics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/rewiring-quantum-scale-stanford-optical-cavity-arrays</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-03-27</lastmod>
+  </url>
+
+  <!-- Featured articles -->
+  <url>
+    <loc>https://qw.ai/articles/quantum-computing-encryption-post-quantum-world</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/quantum-superposition-neural-networks-convergence</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/faster-processing-quantum-advantage</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/anti-tampering-quantum-entanglement</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <!-- Foundational Papers series (20 papers) -->
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-superposition-and-entanglement</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-shors-algorithm</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-bells-theorem</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-grovers-algorithm</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-fourier-transform</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-variational-quantum-eigensolver</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-phase-estimation</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-hhl-algorithm</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-qaoa</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-error-correction</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-deutsch-jozsa-algorithm</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-simons-algorithm</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-bernstein-vazirani-algorithm</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-teleportation</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-simulation</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-surface-code</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-walks</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-bqp-complexity-class</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-amplitude-amplification</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
+  </url>
+
+  <url>
+    <loc>https://qw.ai/articles/foundational-paper-quantum-volume</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-03-15</lastmod>
   </url>
 
 </urlset>

@@ -134,4 +134,8 @@
 
 ## Google Search Console Verification
 - [x] Place google35777266a59dc8e8.html in client/public so it is served at the site root
+- [x] Push to GitHub and save checkpoint (be0f02b9)
+
+## Sitemap Update
+- [x] Update sitemap.xml with all articles including Stanford article and 20 foundational papers
 - [ ] Push to GitHub and save checkpoint
