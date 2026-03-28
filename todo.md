@@ -130,4 +130,8 @@
 ## Stanford Optical Cavity Article
 - [x] Generate cover image for Stanford optical cavity / light-based qubit article
 - [x] Add article to seedData.ts (featured, The Way of the QWAI category, Stanford/Nature sources, published 2026-03-27)
+- [x] Push to GitHub and save checkpoint (5fb1c652)
+
+## Google Search Console Verification
+- [x] Place google35777266a59dc8e8.html in client/public so it is served at the site root
 - [ ] Push to GitHub and save checkpoint
