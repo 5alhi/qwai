@@ -4,7 +4,8 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Link, useParams } from "wouter";
 import { ArrowLeft, Calendar, User, ExternalLink, Share2, Link2, Check } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { marked } from "marked";
 import { usePageTracker } from "@/hooks/usePageTracker";
 
 export default function ArticleDetail() {
@@ -223,7 +224,7 @@ export default function ArticleDetail() {
               prose-ul:text-muted-foreground prose-ol:text-muted-foreground
               prose-li:mb-1
               prose-a:text-accent prose-a:no-underline hover:prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: article.content }}
+            dangerouslySetInnerHTML={{ __html: marked.parse(article.content) as string }}
           />
 
           {/* Share section */}
