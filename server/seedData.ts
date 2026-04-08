@@ -191,6 +191,78 @@ const ARTICLE_3 = {
   publishedAt: new Date("2026-03-15"),
 };
 
+const ARTICLE_TIME_QUANTUM: Parameters<typeof upsertArticle>[0] = {
+  slug: "ai-quantum-breakthrough-world-not-prepared",
+  title: "AI Helped Spark a Quantum Breakthrough. The World Is Not Prepared.",
+  excerpt: "A new paper from Google and startup Oratomic shows AI slashing qubit requirements by 100x, potentially accelerating the timeline for quantum computers to break internet encryption. QWAI analysis of what this means.",
+  content: `## The Headline That Should Alarm Everyone
+
+On April 7, 2026, TIME published a story that deserves to be read slowly. Researchers at Google and quantum computing startup Oratomic published papers suggesting that quantum computers capable of breaking the encryption securing the internet may arrive significantly sooner than the 2035 deadline set by the U.S. National Institute of Standards and Technology (NIST). Cloudflare, which secures a large fraction of internet traffic, immediately announced it was accelerating its own preparation deadline to 2029. Google followed with the same target.
+
+The reason for the alarm is not just the result. It is how the result was achieved.
+
+## What the Research Actually Found
+
+In atomic quantum computers, qubits are encoded using atoms. Traditionally, it takes between 100 and 1,000 atoms to encode a single reliable qubit because of the redundancy required to compensate for environmental noise. The Oratomic team's new algorithm requires just **three atoms per qubit** -- a reduction of up to 100 times.
+
+That single number changes the economics of building a dangerous quantum computer. Fewer atoms means smaller machines. Smaller machines means faster timelines. And faster timelines means the 2035 window the world has been planning around may no longer be realistic.
+
+> "People in the know will be like: 'oh s---, it's coming.'" -- Dolev Bluvstein, co-founder, Oratomic
+
+> "Almost every system in the world becomes vulnerable altogether to a quantum attacker." -- Bas Westerbaan, Cloudflare
+
+## AI Was Not a Tool. It Was a Co-Author.
+
+The part of this story that most commentators have underweighted is the role of AI in producing the result. The Oratomic team's key algorithms initially performed about 1,000 times worse than required. The researchers turned to OpenEvolve, an open-source tool that uses large language models including Google's Gemini and Anthropic's Claude, to optimize the algorithms through a process analogous to natural selection.
+
+The AI tried thousands of combinations, drawing on niche sub-disciplines in quantum computing in ways the human researchers had not anticipated. Without it, lead author Robert Huang says the team would likely have concluded the approach was impossible and abandoned it.
+
+> "There is no question that we used AI to accelerate this development. No question at all." -- Dolev Bluvstein
+
+John Preskill, widely regarded as a pioneer of quantum computing and a co-author on the paper, noted that humans were still "asking the right questions and then guiding the AI towards answers that are useful and informative." That framing matters: AI did not replace scientific judgment. It amplified it by orders of magnitude.
+
+Notably, the published paper draft does not mention AI at all. The team plans a separate follow-up paper detailing the AI methodology, which itself signals how novel and significant that contribution was.
+
+## QWAI's Reading: This Is the Convergence
+
+At QWAI, we have argued since the beginning that AI and quantum computing are not two separate technology trajectories running in parallel. They are a single converging force, and the Oratomic result is the clearest public demonstration of that thesis to date.
+
+**Parallelism over Power.** The 100x qubit reduction was not achieved by building a bigger quantum computer. It was achieved by finding a smarter algorithm. This is the QWAI principle of Parallelism over Power in its most literal form: intelligence at the interface layer doing what brute hardware force cannot.
+
+**Interfaces over Units.** OpenEvolve functioned as an interface between human scientific intuition and the combinatorial search space of quantum algorithm design. The AI did not understand quantum mechanics in the way a physicist does. It understood the shape of the solution space well enough to navigate it. That is precisely the role QWAI assigns to AI in the quantum stack: not replacement, but navigation.
+
+**Networks over Nodes.** The threat this research describes is not to individual systems. Bas Westerbaan's warning is explicit: "almost every system in the world becomes vulnerable." The response must therefore be networked and systemic, not device-by-device. This is the architecture QWAI's Quantum Sentinel framework is designed to address.
+
+## Our Opinion: The 2029 Deadline Is the Right Instinct, but the Wrong Metric
+
+Cloudflare and Google moving to 2029 is the correct directional response. But a fixed deadline creates a false sense of structure in a domain where the timeline is now demonstrably AI-accelerated and therefore non-linear. The next breakthrough may not come in three years. It may come in eighteen months, driven by the same AI-optimization loop that produced this one.
+
+The more important question is not "when will a dangerous quantum computer exist?" It is "what percentage of critical infrastructure has completed the migration to post-quantum cryptography today?" That number, not a calendar year, is the metric that matters.
+
+NIST has published its post-quantum cryptography standards. The algorithms exist. The transition is an engineering and organizational problem, not a research problem. The Oratomic result should be read as a forcing function to treat that transition as the emergency it is.
+
+## What This Means for QWAI
+
+This research validates three things QWAI has been building toward:
+
+1. The convergence of AI and quantum is not theoretical. It is producing results in peer-reviewed research right now.
+2. The security implications of quantum computing are systemic, not incremental, and require a framework like Quantum Sentinel rather than point solutions.
+3. The organizations that will be best positioned in the post-quantum era are those that treat quantum literacy as a strategic capability today, not a future concern.
+
+The world may not be prepared. QWAI is working to change that.
+
+---
+
+*Source: [TIME, April 7, 2026](https://time.com/article/2026/04/07/ai-quantum-computing-advance/) | Related research: [Oratomic preprint](https://arxiv.org/html/2603.28627v1) | [Google Quantum AI](https://quantumai.google/static/site-assets/downloads/cryptocurrency-whitepaper.pdf)*`,
+  author: "Samer Salhi",
+  category: "The Way of the QWAI",
+  imageUrl: "https://d2xsxph8kpxj0f.cloudfront.net/97664517/AZgbj2ZwAKxooAM5AQuEWd/time-ai-quantum-encryption-cover-52RFbYhr8uGh3JZB2oZgyn.webp",
+  published: true,
+  featured: true,
+  linkedinUrl: null,
+  publishedAt: new Date("2026-04-08"),
+};
+
 export async function seedFoundationalContent() {
   const results: { slug: string; status: "inserted" | "skipped" }[] = [];
   // Seed Article #3
@@ -199,6 +271,9 @@ export async function seedFoundationalContent() {
   // Seed Stanford optical cavity article (Nature, Jan 2026)
   const rStanford = await upsertArticle(ARTICLE_STANFORD_CAVITY);
   results.push(rStanford);
+  // Seed TIME article: AI + Quantum breakthrough (April 2026)
+  const rTime = await upsertArticle(ARTICLE_TIME_QUANTUM);
+  results.push(rTime);
 
   // Seed 20 foundational papers
   for (const paper of FOUNDATIONAL_PAPERS) {

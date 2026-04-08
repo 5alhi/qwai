@@ -88,6 +88,13 @@
     <lastmod>2026-03-15</lastmod>
   </url>
 
+  <url>
+    <loc>https://qw.ai/articles/ai-quantum-breakthrough-world-not-prepared</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-04-08</lastmod>
+  </url>
+
   <!-- Foundational Papers series (20 papers) -->
   <url>
     <loc>https://qw.ai/articles/foundational-paper-superposition-and-entanglement</loc>

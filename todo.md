@@ -138,4 +138,12 @@
 
 ## Sitemap Update
 - [x] Update sitemap.xml with all articles including Stanford article and 20 foundational papers
+- [x] Push to GitHub and save checkpoint (536b84fa)
+
+## TIME Article: AI + Quantum Computing (April 2026)
+- [ ] Read and analyze TIME article
+- [ ] Generate cover image
+- [ ] Write full QWAI analysis article (summary, opinion, QWAI tie-ins)
+- [ ] Seed as featured article in seedData.ts
+- [ ] Update sitemap.xml with new article URL
 - [ ] Push to GitHub and save checkpoint
