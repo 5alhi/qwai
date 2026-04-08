@@ -224,7 +224,7 @@ export default function ArticleDetail() {
               prose-ul:text-muted-foreground prose-ol:text-muted-foreground
               prose-li:mb-1
               prose-a:text-accent prose-a:no-underline hover:prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: marked.parse(article.content) as string }}
+            dangerouslySetInnerHTML={{ __html: article.content.trimStart().startsWith('<') ? article.content : marked.parse(article.content) as string }}
           />
 
           {/* Share section */}
